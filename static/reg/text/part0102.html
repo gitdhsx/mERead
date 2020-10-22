@@ -1,0 +1,535 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="318PC0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos316258" class="calibre1"><span class="calibre8"><span class="bold">正则表达式与ASCII码表</span></span></p>
+<p class="calibre1">表A-12是正则表达式与ASCII码表对照。</p>
+<p class="calibre1"><span class="bold">表A-12 ASCII码表</span></p>
+<p class="calibre4"> </p><table class="calibre31" valign="top"><tbody class="calibre32"><tr valign="top" class="calibre33"><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 二进制 </span></span>
+</th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 八进制 </span></span>
+</th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 十进制 </span></span>
+</th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 十六进制 </span></span>
+</th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 字符 </span></span>
+</th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 键盘 </span></span>
+</th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 正则表达式 </span></span>
+</th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 名称 </span></span>
+</th></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00000000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 0 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 0 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 0 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> NUL </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^@ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \c@ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 空字符 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00000001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 1 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 1 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 1 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> SOH </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^A </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \cA </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 标题开始 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00000010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 2 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 2 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 2 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> STX </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^B </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \cB </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 文本开始 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00000011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 3 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 3 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 3 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ETX </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^C </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \cC </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 文本结束 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00000100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 4 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 4 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 4 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> EOT </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^D </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \cD </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 传输结束 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00000101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 5 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 5 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 5 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ENQ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^E </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \cE </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 询问 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00000110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 6 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 6 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 6 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ACK </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^F </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \cF </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 确认 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00000111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 7 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 7 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 7 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> BEL </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^G </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \a， \cG </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 警报字符 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00001000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 10 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 8 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 8 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> BS </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^H </span> </td><td valign="top" class="calibre36"><span class="calibre18"> [\b]， \cH </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 退格符 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00001001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 11 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 9 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 9 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> HT </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^I </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \t， \cI </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 水平制表符 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00001010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 12 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 10 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 0A </span> </td><td valign="top" class="calibre36"><span class="calibre18"> LF </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^J </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \n， \cJ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 换行符 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00001011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 13 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 11 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 0B </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> VT </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^K </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \v， \cK </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 垂直制表符 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00001100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 14 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 12 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 0C </span> </td><td valign="top" class="calibre36"><span class="calibre18"> FF </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^L </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \f， \cL </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 换页符 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00001101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 15 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 13 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 0D </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> CR </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^M </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \r， \cM </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 回车符 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00001110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 16 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 14 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 0E </span> </td><td valign="top" class="calibre36"><span class="calibre18"> SO </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^N </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \cN </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 移出 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00001111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 17 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 15 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 0F </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> SI </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^O </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \cO </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 移入 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00010000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 20 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 16 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 10 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> DLE </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^P </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \cP </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 数据链转义 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00010001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 21 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 17 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 11 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> DC1 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^Q </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \cQ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 设备控制1（XON） </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00010010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 22 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 18 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 12 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> DC2 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^R </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \cR </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 设备控制2 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00010011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 23 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 19 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 13 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> DC3 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^S </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \cS </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 设备控制3（XOFF） </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00010100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 24 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 20 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 14 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> DC4 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^T </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \cT </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 设备控制4 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00010101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 25 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 21 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 15 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> NAK </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^U </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \cU </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 否定性确认 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00010110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 26 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 22 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 16 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> SYN </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^V </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \cV </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 同步空闲 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00010111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 27 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 23 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 17 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ETB </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^W </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \cW </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 传输块结尾 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00011000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 30 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 24 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 18 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> CAN </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^X </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \cX </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 取消 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00011001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 31 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 25 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 19 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> EM </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^Y </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \cY </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 介质结尾 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00011010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 32 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 26 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 1A </span> </td><td valign="top" class="calibre36"><span class="calibre18"> SUB </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^Z </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \cZ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 替换 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00011011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 33 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 27 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 1B </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ESC </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^[ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \e， \c[ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 转义 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00011100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 34 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 28 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 1C </span> </td><td valign="top" class="calibre36"><span class="calibre18"> FS </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^| </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \c| </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 文件分隔符 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00011101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 35 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 29 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 1D </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> GS </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \c] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 分组分隔符 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00011110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 36 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 30 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 1E </span> </td><td valign="top" class="calibre36"><span class="calibre18"> RS </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^^ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \c^ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 记录分隔符 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00011111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 37 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 31 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 1F </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> US </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^_ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \c_ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 单元分隔符 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00100000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 40 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 32 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 20 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> SP </span> </td><td valign="top" class="calibre36"><span class="calibre18"> SP </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \s， [ ] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 空格 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00100001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 41 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 33 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 21 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ! </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ! </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ! </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 感叹号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00100010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 42 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 34 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 22 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> " </span> </td><td valign="top" class="calibre36"><span class="calibre18"> " </span> </td><td valign="top" class="calibre36"><span class="calibre18"> " </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 引号 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00100011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 43 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 35 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 23 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> # </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> # </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> # </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 井号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00100100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 44 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 36 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 24 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> $ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> $ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \$ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 美元符 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00100101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 45 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 37 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 25 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> % </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> % </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> % </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 百分号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00100110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 46 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 38 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 26 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> &amp; </span> </td><td valign="top" class="calibre36"><span class="calibre18"> &amp; </span> </td><td valign="top" class="calibre36"><span class="calibre18"> &amp; </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 和号 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00100111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 47 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 39 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 27 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ' </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ' </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ' </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 撇号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00101000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 50 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 40 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 28 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ( </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ( </span> </td><td valign="top" class="calibre36"><span class="calibre18"> (， \( </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 左括号 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00101001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 51 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 41 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 29 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ) </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ) </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> )， \) </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 右括号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00101010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 52 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 42 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 2A </span> </td><td valign="top" class="calibre36"><span class="calibre18"> * </span> </td><td valign="top" class="calibre36"><span class="calibre18"> * </span> </td><td valign="top" class="calibre36"><span class="calibre18"> * </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 星号 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00101011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 53 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 43 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 2B </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> + </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> + </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> + </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 加号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00101100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 54 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 44 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 2C </span> </td><td valign="top" class="calibre36"><span class="calibre18"> , </span> </td><td valign="top" class="calibre36"><span class="calibre18"> , </span> </td><td valign="top" class="calibre36"><span class="calibre18"> , </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 逗号 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00101101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 55 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 45 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 2D </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> - </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> - </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> - </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 连字符 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00101110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 56 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 46 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 2E </span> </td><td valign="top" class="calibre36"><span class="calibre18"> . </span> </td><td valign="top" class="calibre36"><span class="calibre18"> . </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \.， [.] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 句号 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00101111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 57 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 47 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 2F </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> / </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> / </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> / </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 斜线 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00110000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 60 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 48 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 30 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 0 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 0 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \d， [0] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 数字0 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00110001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 61 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 49 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 31 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 1 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 1 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \d， [1] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 数字1 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00110010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 62 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 50 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 32 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 2 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 2 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \d， [2] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 数字2 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00110011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 63 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 51 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 33 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 3 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 3 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \d， [3] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 数字3 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00110100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 64 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 52 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 34 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 4 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 4 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \d， [4] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 数字4 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00110101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 65 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 53 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 35 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 5 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 5 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \d， [5] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 数字5 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00110110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 66 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 54 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 36 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 6 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 6 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \d， [6] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 数字6 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00110111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 67 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 55 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 37 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 7 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 7 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \d， [7] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 数字7 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00111000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 70 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 56 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 38 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 8 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 8 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \d， [8] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 数字8 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00111001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 71 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 57 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 39 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 9 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 9 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \d， [9] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 数字9 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00111010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 72 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 58 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 3A </span> </td><td valign="top" class="calibre36"><span class="calibre18"> : </span> </td><td valign="top" class="calibre36"><span class="calibre18"> : </span> </td><td valign="top" class="calibre36"><span class="calibre18"> : </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 冒号 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00111011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 73 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 59 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 3B </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ; </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ; </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ; </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 分号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00111100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 74 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 60 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 3C </span> </td><td valign="top" class="calibre36"><span class="calibre18"> &lt; </span> </td><td valign="top" class="calibre36"><span class="calibre18"> &lt; </span> </td><td valign="top" class="calibre36"><span class="calibre18"> &lt; </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 小于号 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00111101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 75 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 61 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 3D </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> = </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> = </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> = </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 等于号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00111110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 76 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 62 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 3E </span> </td><td valign="top" class="calibre36"><span class="calibre18"> &gt; </span> </td><td valign="top" class="calibre36"><span class="calibre18"> &gt; </span> </td><td valign="top" class="calibre36"><span class="calibre18"> &gt; </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 大于号 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 00111111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 77 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 63 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 3F </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ? </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ? </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ? </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 问号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01000000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 64 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 40 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> @ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> @ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> @ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> at </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01000001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 65 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 41 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> A </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> A </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [A] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母A </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01000010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 102 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 66 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 42 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> B </span> </td><td valign="top" class="calibre36"><span class="calibre18"> B </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [B] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母B </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01000011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 103 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 67 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 43 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> C </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> C </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [C] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母C </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01000100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 104 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 68 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 44 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> D </span> </td><td valign="top" class="calibre36"><span class="calibre18"> D </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [D] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母D </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01000101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 105 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 69 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 45 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> E </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> E </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [E] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母E </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01000110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 106 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 70 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 46 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> F </span> </td><td valign="top" class="calibre36"><span class="calibre18"> F </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [F] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母F </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01000111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 107 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 71 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 47 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> G </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> G </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [G] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母G </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01001000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 72 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 48 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> H </span> </td><td valign="top" class="calibre36"><span class="calibre18"> H </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [H] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母H </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01001001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 73 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 49 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> I </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> I </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [I] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母I </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01001010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 112 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 74 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 4A </span> </td><td valign="top" class="calibre36"><span class="calibre18"> J </span> </td><td valign="top" class="calibre36"><span class="calibre18"> J </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [J] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母J </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01001011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 113 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 75 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 4B </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> K </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> K </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [K] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母K </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01001100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 114 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 76 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 4C </span> </td><td valign="top" class="calibre36"><span class="calibre18"> L </span> </td><td valign="top" class="calibre36"><span class="calibre18"> L </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [L] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母L </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01001101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 115 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 77 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 4D </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> M </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> M </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [M] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母M </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01001110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 116 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 78 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 4E </span> </td><td valign="top" class="calibre36"><span class="calibre18"> N </span> </td><td valign="top" class="calibre36"><span class="calibre18"> N </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [N] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母N </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01001111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 117 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 79 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 4F </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> O </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> O </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [O] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母O </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01010000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 120 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 80 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 50 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> P </span> </td><td valign="top" class="calibre36"><span class="calibre18"> P </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [P] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母P </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01010001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 121 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 81 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 51 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> Q </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> Q </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [Q] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母Q </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01010010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 122 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 82 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 52 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> R </span> </td><td valign="top" class="calibre36"><span class="calibre18"> R </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [R] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母R </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01010011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 123 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 83 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 53 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> S </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> S </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [S] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母S </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01010100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 124 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 84 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 54 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> T </span> </td><td valign="top" class="calibre36"><span class="calibre18"> T </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [T] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母T </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01010101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 125 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 85 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 55 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> U </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> U </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [U] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母U </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01010110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 126 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 86 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 56 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> V </span> </td><td valign="top" class="calibre36"><span class="calibre18"> V </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [V] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母V </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01010111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 127 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 87 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 57 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> W </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> W </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [W] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母W </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01011000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 130 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 88 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 58 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> X </span> </td><td valign="top" class="calibre36"><span class="calibre18"> X </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [X] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母X </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01011001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 131 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 89 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 59 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> Y </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> Y </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [Y] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母Y </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01011010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 132 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 90 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 5A </span> </td><td valign="top" class="calibre36"><span class="calibre18"> Z </span> </td><td valign="top" class="calibre36"><span class="calibre18"> Z </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [Z] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁大写字母Z </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01011011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 133 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 91 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 5B </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> [ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> [ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \[ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 左方括号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01011100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 134 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 92 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 5C </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 反斜线 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01011101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 135 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 93 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 5D </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 右方括号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01011110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 136 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 94 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 5E </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ^， [^] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 抑扬符号 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01011111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 137 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 95 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 5F </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> _ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> _ </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> _， [_] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 下划线 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 00100000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 140 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 96 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 60 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ` </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ` </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \` </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 重音符 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01100001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 141 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 97 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 61 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> a </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> a </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [a] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母A </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01100010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 142 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 98 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 62 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> b </span> </td><td valign="top" class="calibre36"><span class="calibre18"> b </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [b] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母B </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01100011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 143 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 99 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 63 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> c </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> c </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [c] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母C </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01100100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 144 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 64 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> d </span> </td><td valign="top" class="calibre36"><span class="calibre18"> d </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [d] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母D </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01100101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 145 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 65 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> e </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> e </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [e] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母E </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01100110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 146 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 102 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 66 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> f </span> </td><td valign="top" class="calibre36"><span class="calibre18"> f </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [f] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母F </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01100111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 147 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 103 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 67 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> g </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> g </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [g] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母G </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01101000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 150 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 104 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 68 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> h </span> </td><td valign="top" class="calibre36"><span class="calibre18"> h </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [h] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母H </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01101001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 151 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 105 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 69 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> i </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> i </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [i] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母I </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01101010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 152 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 106 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 6A </span> </td><td valign="top" class="calibre36"><span class="calibre18"> j </span> </td><td valign="top" class="calibre36"><span class="calibre18"> j </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [j] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母J </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01101011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 153 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 107 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 6B </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> k </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> k </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [k] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母K </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01101100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 154 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 108 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 6C </span> </td><td valign="top" class="calibre36"><span class="calibre18"> l </span> </td><td valign="top" class="calibre36"><span class="calibre18"> l </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [l] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母L </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01101101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 155 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 109 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 6D </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> m </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> m </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [m] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母M </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01101110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 156 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 6E </span> </td><td valign="top" class="calibre36"><span class="calibre18"> n </span> </td><td valign="top" class="calibre36"><span class="calibre18"> n </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [n] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母N </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01101111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 157 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 6F </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> o </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> o </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [o] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母O </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01110000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 160 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 112 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 70 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> p </span> </td><td valign="top" class="calibre36"><span class="calibre18"> p </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [p] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母P </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01110001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 161 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 113 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 71 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> q </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> q </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [q] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母Q </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01110010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 162 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 114 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 72 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> r </span> </td><td valign="top" class="calibre36"><span class="calibre18"> r </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [r] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母R </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01110011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 163 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 115 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 73 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> s </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> s </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [s] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母S </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01110100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 164 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 116 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 74 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> t </span> </td><td valign="top" class="calibre36"><span class="calibre18"> t </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [t] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母T </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01110101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 165 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 117 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 75 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> u </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> u </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [u] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母U </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01110110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 166 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 118 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 76 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> v </span> </td><td valign="top" class="calibre36"><span class="calibre18"> v </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [v] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母V </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01110111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 167 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 119 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 77 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> w </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> w </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [w] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母W </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01111000 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 170 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 120 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 78 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> x </span> </td><td valign="top" class="calibre36"><span class="calibre18"> x </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [x] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母X </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01111001 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 171 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 121 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 79 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> y </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> y </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \w， [y] </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母Y </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01111010 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 172 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 122 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 7A </span> </td><td valign="top" class="calibre36"><span class="calibre18"> z </span> </td><td valign="top" class="calibre36"><span class="calibre18"> z </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \w， [z] </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 拉丁小写字母Z </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01111011 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 173 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 123 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 7B </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> { </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> { </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> { </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 左花括号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01111100 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 174 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 124 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 7C </span> </td><td valign="top" class="calibre36"><span class="calibre18"> | </span> </td><td valign="top" class="calibre36"><span class="calibre18"> | </span> </td><td valign="top" class="calibre36"><span class="calibre18"> | </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 竖线 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01111101 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 175 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 125 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 7D </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> } </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> } </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> } </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 右花括号 </span>
+</td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> 01111110 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 176 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 126 </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 7E </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ~ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> ~ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> \~ </span> </td><td valign="top" class="calibre36"><span class="calibre18"> 波浪符 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> 01111111 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 177 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 127 </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 7F </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> DEL </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> ^? </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> \c? </span>
+</td><td valign="top" class="calibre36"><span class="calibre18"> 删除 </span>
+</td></tr></tbody></table>
+<div class="mbppagebreak" id="calibre_pb_102"></div>
+</body></html>

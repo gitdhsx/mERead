@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="QMFO0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos63715" class="calibre1"><span class="calibre8"><span class="bold">2.3 匹配非数字字符</span></span></p>
+<p class="calibre1">通常可以将简写式取反，取反的结果就是排除。比如，要匹配非数字字符，可使用包含以下大写字母D的简写式：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">\D<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">请在RegExr中试一试。大写字母D取代小写字母d，就会匹配非数字字符（如图2-4所示）。该简写式与以下字符组取反的作用相同（字符组取反的意思其实就是“不匹配这些”或“匹配除这些以外的内容”）：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[^0-9]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">下面这个表达式作用也一样：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[^\d]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre28"><img class="calibre29" src="../images/00010.jpeg"/></p>
+<p class="calibre1"><span class="bold">图2-4 在RegExr中用</span><tt class="calibre19"><span class="bold">\D</span></tt><span class="bold">匹配非数字字符</span></p>
+<div class="mbppagebreak" id="calibre_pb_28"></div>
+</body></html>

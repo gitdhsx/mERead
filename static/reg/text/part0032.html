@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="UGI00-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos76934" class="calibre1"><span class="calibre8"><span class="bold">2.7 给文本加标签</span></span></p>
+<p class="calibre1">怎么让“The Rime of the Ancient Mariner”的内容以网页而不是纯文本形式显示呢？换句话说，怎么使用正则表达式而不是手写方式为它们添加HTML5标签呢？</p>
+<p class="calibre1">在之后的几章中，我会陆续展示相应的方法，本章先从简单情况的开始。</p>
+<p class="calibre1">点击RegExr中的Replace（替换）标签，选中multiline（多行）选项，然后在第一个文本框中键入：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">(^T.*$)<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">这个表达式会从文件的开始匹配诗文的第一行，然后使用括号将文本捕获到一个分组中。在第二个文本框中键入：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">&lt;h1&gt;$1&lt;\h1&gt;<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">这个替换表达式将<tt class="calibre19">$1</tt>捕获的内容嵌套在了h1标签中。可以在底部的文本框中看到结果。<tt class="calibre19">$1</tt>是一个Perl风格的后向引用。此外，在包括Perl在内的多数实现程序中，还可以使用<tt class="calibre19">\1</tt>表示后向引用，但是RegExr只支持<tt class="calibre19">$1</tt>、<tt class="calibre19">$2</tt>、<tt class="calibre19">$3</tt>这样的方式。我们会在第4章中讲解更多有关分组和后向引用的内容。</p>
+<p id="filepos78371" class="calibre1"><span class="calibre38"><span class="bold">2.7.1 用sed为文本加标签</span></span></p>
+<p class="calibre1">在命令行中使用sed也可以为文本添加标签。sed是Unix流编辑器，它支持用正则表达式转换文本。sed最初在20世纪70年代早期由Lee McMahon于贝尔实验室开发。如果用户使用的是Mac或者Linux，那就已经有sed了。</p>
+<p class="calibre1">请在shell提示符（比如Mac中的Terminal终端窗口）中测试以下内容：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">echo Hello | sed s/Hello/Goodbye/<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">运行的过程应该如下：</p>
+<div class="calibre13"> </div>
+<ul class="calibre14"><li class="calibre15" value="1"><tt class="calibre19">echo</tt>命令将在标准输出设备（通常是屏幕）中打印单词Hello，竖线符（|）将打印内容通过管道传到之后的<tt class="calibre19">sed</tt>命令；</li><li class="calibre15" value="2">管道将<tt class="calibre19">echo</tt>的输出转为sed的输入；</li><li class="calibre15" value="3">sed的<tt class="calibre19">s</tt>命令将单词Hello变为Goodbye，而Goodbye就显示在屏幕上了。</li></ul>
+<p class="calibre1">如果你的平台上还没有安装sed，可以参考本章末尾相关资源中的链接。其中还讨论了BSD和GNU两个版本的sed。</p>
+<p class="calibre1">现在试着在命令或shell提示符中键入：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">sed -n 's/^/&lt;h1&gt;<i class="italic">;s</i>$/&lt;\/h1&gt;/p;q' rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">而输出就是：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">&lt;h1&gt;THE RIME OF THE ANCYENT MARINERE, IN SEVEN PARTS.&lt;/h1&gt;<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">以下是正则表达式处理器的工作过程解析。</p>
+<div class="calibre13"> </div>
+<ul class="calibre14"><li class="calibre15" value="1">首先调用sed程序。</li><li class="calibre15" value="2">sed默认的操作是直接复制每行输入并输出，<tt class="calibre19">-n</tt>选项覆盖了该默认操作。之所要覆盖默认操作，是因为我们只想让正则表达式影响第1行。</li><li class="calibre15" value="3"><tt class="calibre19">s/^/&lt;h1&gt;/</tt>在行的开头（<tt class="calibre19">^</tt>）添加<tt class="calibre19">&lt;h1&gt;</tt>标签。</li><li class="calibre15" value="4">分号（<tt class="calibre19">;</tt>）用于分隔命令。</li><li class="calibre15" value="5"><tt class="calibre19">s/$/&lt;\/h1&gt;/</tt>在行的结尾（<tt class="calibre19">$</tt>）添加<tt class="calibre19">&lt;/h1&gt;</tt>标签。</li><li class="calibre15" value="6">命令<tt class="calibre19">p</tt>会打印受影响的那一行（第1行）。与<tt class="calibre19">-n</tt>不同，后者会打印所有行。</li><li class="calibre15" value="7">最后命令<tt class="calibre19">q</tt>会结束程序，这样sed程序就只会处理第1行。</li><li class="calibre15" value="8">所有的操作都是针对rime.txt文件执行的。</li></ul>
+<p class="calibre1">这行命令还有另一种写法，即用<tt class="calibre19">-e</tt>选项分别引导每个命令。我当然更喜欢使用带分号的写法，因为那种写法更简短。</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19"> sed -ne 's/^/&lt;h1&gt;/' -e 's/$/&lt;\/h1&gt;/p' -e 'q' rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">可以将这些命令写到文件里，比如这里所示的文件h1.sed（该文件就在之前所说的代码库里）：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">#!/usr/bin/sed<br class="calibre16"/><br class="calibre16"/>s/^/&lt;h1&gt;/<br class="calibre16"/>s/$/&lt;\/h1&gt;/<br class="calibre16"/>q<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">若要运行该文件，请在与rime.txt同一个路径或文件夹里运行如下命令：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">sed -f h1.sed rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p id="filepos82257" class="calibre20"><span class="calibre38"><span class="bold">2.7.2 用Perl为文本加标签</span></span></p>
+<p class="calibre1">最后，我将展示如何用Perl来做类似的事。Perl是由Larry Wall于1987年创立的一种通用程序设计语言。它以对正则表达式的强大支持和文本处理能力而闻名。</p>
+<p class="calibre1">在命令提示符中键入</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">perl –v<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">然后回车，看看你的系统中是否已经安装了Perl。该命令会返回系统中Perl的版本信息或者返回错误（参见2.9节）。</p>
+<p class="calibre1">在命令提示符中键入：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">perl -ne 'if ($. == 1) { s/^/&lt;h1&gt;/; s/$/&lt;\/h1&gt;/m; print; }' rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">就可以得到和sed示例中一样的输出结果：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">&lt;h1&gt;THE RIME OF THE ANCYENT MARINERE, IN SEVEN PARTS.&lt;/h1&gt;<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">以下是这个Perl命令的执行过程解析。</p>
+<div class="calibre13"> </div>
+<ul class="calibre14"><li class="calibre15" value="1"><tt class="calibre19">perl</tt>调用了Perl程序。</li><li class="calibre15" value="2"><tt class="calibre19">-n</tt>选项输出全部输入内容（rime.txt文件）。</li><li class="calibre15" value="3"><tt class="calibre19">-e</tt>选项允许在命令行（而不用在文件）中提交程序代码。</li><li class="calibre15" value="4"><tt class="calibre19">if</tt>语句检查是否在第一行。在Perl中<tt class="calibre19">$.</tt>是个特殊的变量，它匹配当前行。</li><li class="calibre15" value="5">第一个替换命令<tt class="calibre19">s</tt>先找到第一行的开头（<tt class="calibre19">^</tt>）然后插入<tt class="calibre19">&lt;h1&gt;</tt>标签。</li><li class="calibre15" value="6">第二个替换命令<tt class="calibre19">s</tt>搜寻行结尾（<tt class="calibre19">$</tt>）再插入<tt class="calibre19">&lt;/h1&gt;</tt>标签。</li><li class="calibre15" value="7">替换命令最后的<tt class="calibre19">m</tt>（多行）修饰符，表示将本行单独处理；这样，<tt class="calibre19">$</tt>就只匹配第一行的结尾而不会匹配整个文本的结尾。</li><li class="calibre15" value="8">最后在标准输出设备（屏幕）中打印出结果。</li><li class="calibre15" value="9">所有这些操作都是针对rime.txt文件的。</li></ul>
+<p class="calibre1">同样可以将这些命令放入程序文件中，比如示例代码库中的h1.pl文件。</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">#!/usr/bin/perl –n<br class="calibre16"/><br class="calibre16"/>if ($. == 1) {<br class="calibre16"/>  s/^/&lt;h1&gt;/;<br class="calibre16"/>  s/$/&lt;\/h1&gt;/m;<br class="calibre16"/>  print;<br class="calibre16"/>}<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">然后在rime.txt的同一个目录下，执行如下命令：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">perl h1.pl rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">用Perl语言实现相同任务的方式很多，也许这不是为文本添加标记的最有效的方法。很可能本书上市后，我又会想出使用Perl（或其他工具）的更有效的方法。希望你也能够想到。</p>
+<p class="calibre1">下一章我们将讨论边界和<span class="bold">零宽度断言</span>。</p>
+<div class="mbppagebreak" id="calibre_pb_32"></div>
+</body></html>

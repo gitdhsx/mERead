@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="K0RQ0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos46019" class="calibre1"><span class="calibre8"><span class="bold">1.8 括选文字符</span></span></p>
+<p class="calibre1">最后这个正则表达式表示第一个3位数字可以带也可以不带括号，即区号是可选的：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">^(\(\d{3}\)|^\d{3}[.-]?)?\d{3}[.-]?\d{4}$<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">为了便于理解，我们再依次看一下表达式中的各项：</p>
+<div class="calibre13"> </div>
+<ul class="calibre14"><li class="calibre15" value="1">
+<p class="calibre1">出现在正则表达式起始位置或者竖线（<tt class="calibre19">|</tt>）之后的脱字符<tt class="calibre19">^</tt>，表示电话号码会出现在一行的起始位置；</p>
+</li><li class="calibre15" value="2">
+<p class="calibre1">左括号<tt class="calibre19">(</tt>为捕获分组的起始符；</p>
+</li><li class="calibre15" value="3">
+<p class="calibre1"><tt class="calibre19">\(</tt>表示左括号本身；</p>
+</li><li class="calibre15" value="4">
+<p class="calibre1"><tt class="calibre19">\d</tt> 匹配一位数字；</p>
+</li><li class="calibre15" value="5">
+<p class="calibre1"><tt class="calibre19">\d</tt>之后的<tt class="calibre19">{3}</tt>是量词，表示匹配三位数字；</p>
+</li><li class="calibre15" value="6">
+<p class="calibre1"><tt class="calibre19">\)</tt>匹配右括号本身；</p>
+</li><li class="calibre15" value="7">
+<p class="calibre1">竖线符<tt class="calibre19">|</tt>表示<span class="bold">选择</span>，也就是从多个可选项中选择一个，换句话说，它表示“匹配一个不带括号的区号或一个带括号的区号”；</p>
+</li><li class="calibre15" value="8">
+<p class="calibre1">脱字符<tt class="calibre19">^</tt>匹配行起始位置；</p>
+</li><li class="calibre15" value="9">
+<p class="calibre1"><tt class="calibre19">\d</tt> 匹配一位数字；</p>
+</li><li class="calibre15" value="10">
+<p class="calibre1"><tt class="calibre19">{3}</tt>是表示匹配三位数字的量词；</p>
+</li><li class="calibre15" value="11">
+<p class="calibre1"><tt class="calibre19">[.-]？</tt>匹配一个可选的点号或连字符；</p>
+</li><li class="calibre15" value="12">
+<p class="calibre1">右括号<tt class="calibre19">)</tt>为捕获分组的结束符；</p>
+</li><li class="calibre15" value="13">
+<p class="calibre1">问号<tt class="calibre19">？</tt>表示分组可选，即分组中的前缀可有可无；</p>
+</li><li class="calibre15" value="14">
+<p class="calibre1"><tt class="calibre19">\d</tt> 匹配一位数字；</p>
+</li><li class="calibre15" value="15">
+<p class="calibre1"><tt class="calibre19">{3}</tt>表示匹配三位数字的量词；</p>
+</li><li class="calibre15" value="16">
+<p class="calibre1"><tt class="calibre19">[.-]？</tt>匹配另一个可选的点号或连字符；</p>
+</li><li class="calibre15" value="17">
+<p class="calibre1"><tt class="calibre19">\d</tt> 匹配一位数字；</p>
+</li><li class="calibre15" value="18">
+<p class="calibre1"><tt class="calibre19">{4}</tt>是表示匹配四位数字的量词；</p>
+</li><li class="calibre15" value="19">
+<p class="calibre1">美元符<tt class="calibre19">$</tt>匹配行结束位置。</p>
+</li></ul>
+<p class="calibre1">这个表达式最终匹配十位的北美电话号码，而且括号、连字符或者点号都是可选的。你可以试试不同格式的电话号码，看看它能否匹配。</p>
+<blockquote class="calibre12">以上正则表达式中的捕获分组并不是必需的。分组是必要的，但是捕获不需要。更好的方法是使用非捕获分组。在本书最后一章中我们再次讨论这个正则表达式时，你自然就理解了。</blockquote>
+<div class="mbppagebreak" id="calibre_pb_21"></div>
+</body></html>

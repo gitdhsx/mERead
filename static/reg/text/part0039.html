@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="1565U0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos102967" class="calibre20"><span class="calibre8"><span class="bold">3.4 使用元字符的字面值</span></span></p>
+<p class="calibre1">可以用</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">\Q<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">和</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">\E<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">之间的字符集匹配字符串字面值。</p>
+<p class="calibre1">为了展示这一点，在RegExr下方文本框中输入以下元字符：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">.^$*+?|(){}[]\-<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">这15个元字符在正则表达式中有特殊含义，用来编写匹配模式。（连字符在字符组的方括号中用来表示范围。但在其他情况下，则无特殊含义。）</p>
+<p class="calibre1">如果你在RegExr上方的文本框中尝试匹配这些字符，则不会看到任何结果。为什么呢？因为RegExr会认为这是个正则表达式而不是字符串字面值。现在试一下</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">\Q$\E<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">它将匹配<tt class="calibre19">$</tt>，因为<tt class="calibre19">\Q</tt>和<tt class="calibre19">\E</tt>之间的任意字符都会被解释为普通字符（参见图3-3）。（记住，可以在元字符之前加一个<tt class="calibre19">\</tt>使其匹配字面值。）</p>
+<p class="calibre21"><img class="calibre41" src="../images/00015.jpeg"/></p>
+<p class="calibre1"><span class="bold">图3-3 使用元字符的字面值</span></p>
+<div class="mbppagebreak" id="calibre_pb_39"></div>
+</body></html>

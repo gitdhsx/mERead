@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="27GQ60-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos212933" class="calibre20"><span class="calibre8"><span class="bold">8.4 反后顾</span></span></p>
+<p class="calibre1">最后一种环视是反后顾。你能猜到它的工作原理吗？</p>
+<p class="calibre1">反后顾会查看某个模式在从左至右的文本流的后面<span class="bold">没有</span>出现。同样，它有一个小于号（&lt;），提醒后顾的是哪个方向。</p>
+<p class="calibre1">请在RegExr中使用这个命令并查看结果：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">(?1)(?&lt;!ancyent) marinere<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">滚动到下方看看结果是什么。</p>
+<p class="calibre1">然后用Perl语言尝试：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">perl -ne 'print if <i class="italic">(?i)(?&lt;!ancyent) marinere</i>' rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">以下就是你会看到的结果，没有一个地方含有单词ancyent：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">   The Marinere hath his will.<br class="calibre16"/>   The bright-eyed Marinere.<br class="calibre16"/>   The bright-eyed Marinere.<br class="calibre16"/> The Marineres gave it biscuit-worms,<br class="calibre16"/>   Came to the Marinere's hollo!<br class="calibre16"/>   Came to the Marinere's hollo!<br class="calibre16"/> The Marineres all 'gan work the ropes,<br class="calibre16"/> The Marineres all return'd to work<br class="calibre16"/> The Marineres all 'gan pull the ropes,<br class="calibre16"/>   "When the Marinere's trance is abated."<br class="calibre16"/> He loves to talk with Marineres<br class="calibre16"/> The Marinere, whose eye is bright,<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">最后在ack中这样做：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">ack -i '(?&lt;!ancyent) marinere' rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">以上就是对前瞻和后顾的简单介绍，这是现代正则表达式的一个重要特性。</p>
+<p class="calibre1">在下一章中，你将会看到如何使用sed和Perl为文档添加HTML5标签的完整例子。</p>
+<div class="mbppagebreak" id="calibre_pb_75"></div>
+</body></html>

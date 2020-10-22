@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="1T1400-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos187839" class="calibre1"><span class="calibre8"><span class="bold">7.1 贪心、懒惰和占有 </span></span></p>
+<p class="calibre1">这说的可不是小时候的你，而是在说量词。这些形容词听起来不像什么好特性，但要想把正则表达式用好，却一定要了解量词的这些特性。</p>
+<p class="calibre1">量词自身是贪心的。贪心的量词会首先匹配整个字符串。尝试匹配时，它会选定尽可能多的内容，也就是整个输入。量词首次尝试匹配整个字符串，如果失败则回退一个字符后再次尝试。这个过程叫做<span class="bold">回溯</span>（backtracking）。它会每次回退一个字符，直到找到匹配的内容或者没有字符可尝试为止。此外，它还记录所有的行为，因此相较另两种方式它对资源的消耗最大。它先“吃”尽所有的字符，然后每次“吐”出一点，慢慢咀嚼消化……你应该明白了。</p>
+<p class="calibre1">懒惰（有时也说<span class="bold">勉强</span>）的量词则使用另一种策略。它从目标的起始位置开始尝试寻找匹配，每次检查字符串的一个字符，寻找它要匹配的内容。最后，它会尝试匹配整个字符串。要使一个量词成为懒惰的，必须在普通量词后添加一个问号（?）。它每次只“吃”一点。</p>
+<p class="calibre1">占有量词会覆盖整个目标然后尝试寻找匹配内容，但它只尝试一次，不会回溯。占有量词就是在普通量词之后添加一个加号（+）。它不“咀嚼”而是直接“吞咽”，然后才想知道“吃”的是什么。下面几节将逐一展示这几种量词。</p>
+<div class="mbppagebreak" id="calibre_pb_64"></div>
+</body></html>

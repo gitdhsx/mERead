@@ -10,9 +10,9 @@
         <div class="icon-wrapper"><span class="icon-more icon"></span></div>
       </div>
     </div>
-    <div id="title" class="loadbook" v-show="isShow">
+    <!-- <div id="title" class="loadbook" v-show="isShow">
       <input type="file" id="input" />
-    </div>
+    </div> -->
     <div class="read-wrapper">
       <div class="mask">
         <div class="left" @click.prevent="prevPage">

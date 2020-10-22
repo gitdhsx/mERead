@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="I3QM0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos40298" class="calibre1"><span class="calibre8"><span class="bold">1.6 捕获分组和后向引用</span></span></p>
+<p class="calibre1">本节我们使用<span class="bold">捕获分组</span>（capturing group）来匹配电话号码中的某一部分。然后使用<span class="bold">后向引用</span>（backreference）对分组中的内容进行引用。要创建捕获分组，先将一个<tt class="calibre19">\d</tt>放在一对圆括号中，这样就将它放入了一个分组中，后面可以用<tt class="calibre19">\1</tt>来对捕获的内容进行后向引用：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">(\d)\d\1<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20"><tt class="calibre19">\1</tt>对括号内分组捕获的内容进行了反向引用。这个正则表达式匹配的是区号707。以下是对该表达式的详细分析：</p>
+<div class="calibre13"> </div>
+<ul class="calibre14"><li class="calibre15" value="1">
+<p class="calibre1"><tt class="calibre19">(\d)</tt>匹配第一个数字并将其捕获（数字7）；</p>
+</li><li class="calibre15" value="2">
+<p class="calibre1"><tt class="calibre19">\d</tt>匹配第二个数字（数字0）但没有捕获，因为没有括号；</p>
+</li><li class="calibre15" value="3">
+<p class="calibre1"><tt class="calibre19">\1</tt>对捕获的数字进行反向引用（数字7）。</p>
+</li></ul>
+<p class="calibre1">这个正则表达式只匹配了区号。如果你还没有完全理解，请不要担心。本书后面会介绍很多有关捕获分组的示例。</p>
+<p class="calibre1">现在可以用一个分组和几个后向引用对整个电话号码进行匹配：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">(\d)0\1\D\d\d\1\D\1\d\d\d<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">但这还不够简洁美观。下一节我们会尝试更好的方法。</p>
+<div class="mbppagebreak" id="calibre_pb_19"></div>
+</body></html>

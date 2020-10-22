@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="20R680-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos200098" class="calibre20"><span class="calibre8"><span class="bold">7.5 占有量词</span></span></p>
+<p class="calibre1">占有式匹配很像贪心式匹配，它会选定尽可能多的内容。但与贪心式匹配不同的是它不进行回溯。它不会放弃所找到的内容，它很自私，这也是把它称为占有式（possessive）的原因。它紧紧“抱”住自己所选的内容，一点也不放弃。但占有量词的优点是速度快，因为无需回溯。当然，匹配失败的话也很快。</p>
+<blockquote class="calibre12">说实话，用本书中的例子你很难看出贪心式、懒惰式以及占有式量词的区别。但随着经验的增长，以及对性能的看重，你会发觉其中的不同。</blockquote>
+<p class="calibre1">为了理解这一点，我们先尝试匹配以零开头的多个零，然后再匹配以零结尾的多个零。在Reggy中，先确定勾选Match All，然后输入以下以零开头的表达式：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">0.*+<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">发生什么了？所有的零都被标亮了。存在一个匹配。占有式的匹配看起来和贪心式的匹配是一样的，但没有回溯。可以证明一下。输入这个带有结尾零的表达式：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">.*+0<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">没有匹配——原因就是没有回溯。它一下就选定了所有的输入，不再回过来查看。它“挥霍”了自己的财产。它一下子没在结尾找到零，也不知道该从哪里找起。如果将加号去掉，它会找到所有的0，因为它变回贪心式匹配了。</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">.*0<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">当你知道文本中的内容时，就知道在哪里可以找到匹配，这时你应该会使用占有量词。你不在乎它是否会选定所有内容。占有式匹配有助于提高匹配的性能。表7-4列出了占有量词。</p>
+<p class="calibre1">表7-4 占有量词</p>
+<p class="calibre4"> </p><table class="calibre31" valign="top"><tbody class="calibre32"><tr valign="top" class="calibre33"><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 语法 </span></span></th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 描述 </span></span>
+</th></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> ?+ </span></td><td valign="top" class="calibre36"><span class="calibre18"> 占有式匹配零次或一次（可选） </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> ++ </span></td><td valign="top" class="calibre36"><span class="calibre18"> 占有式匹配一次或多次 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> *+  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 占有式匹配零次或多次 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> {</span><span class="calibre18"><span class="italic">n </span></span><span class="calibre18">}+</span></td><td valign="top" class="calibre36"><span class="calibre18"> 占有式匹配</span><span class="calibre18"><span class="italic">n </span></span><span class="calibre18">次</span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> {</span><span class="calibre18"><span class="italic">n </span></span><span class="calibre18">,}+ </span></td><td valign="top" class="calibre36"><span class="calibre18"> 占有式匹配</span><span class="calibre18"><span class="italic">n </span></span><span class="calibre18">次或更多次</span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18">  {</span><span class="calibre18"><span class="italic">m</span></span><span class="calibre18">,</span><span class="calibre18"><span class="italic">n </span></span><span class="calibre18">}+ </span></td><td valign="top" class="calibre36"><span class="calibre18"> 占有式匹配</span><span class="calibre18"><span class="italic">m</span></span><span class="calibre18">至</span><span class="calibre18"><span class="italic">n </span></span><span class="calibre18">次</span></td></tr></tbody></table>
+<p class="calibre20">下一章将会介绍环视。</p>
+<div class="mbppagebreak" id="calibre_pb_68"></div>
+</body></html>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="4OIQ0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos14541" class="calibre1"><span class="calibre2"><span class="bold">前言</span></span></p>
+<p class="calibre1">本书通过示例介绍如何编写正则表达式，旨在让读者轻松掌握正则表达式。事实上，笔者几乎将所涉及的每一个概念都通过示例展示了出来，读者很容易模仿尝试。</p>
+<p class="calibre1">正则表达式有助于找到文本字符串中的各种模式。更确切地说，正则表达式是经过专门编写的文本字符串，用来匹配字符串（尤其是文件内字符串）集合中符合该模式的所有字符串。</p>
+<p class="calibre1">正则表达式最早出现于美国数学家斯蒂芬·克莱尼编写的<span class="italic">Introduction to Metamathematics</span>一书中（1952年Van Nostrand公司出版）。但其实这个概念早在20世纪40年代初就已形成。到了70年代，随着Unix操作系统及其实用程序sed、grep等问世，正则表达式得到了计算机科学家更为广泛的使用。Unix操作系统是美国电话电报公司下属贝尔实验室的Brian Kernighan、Dennis Ritchie、Ken Thompson以及其他工作人员的杰作。</p>
+<p class="calibre1">据我所知，最早出现正则表达式的计算机应用程序是QED编辑器。QED是Quick Editor的缩写，它是为运行在Scientific Data Systems公司<sup class="calibre9"><small class="calibre10"><span class="calibre10">〔1〕</span></small></sup>SDS 940计算机中的Berkeley Timesharing System编写的。1970年的记录显示，QED是由Ken Thompson在之前MIT的Compatible Time-Sharing System中另外一个编辑器基础上重写而成的。从此，计算技术领域有了真正的正则表达式实现。（附录中的表A-1列出了QED的正则表达式特性。）</p>
+<p class="calibre1"><sub class="calibre11"><small class="calibre10"><span class="calibre10">〔1〕Scientific Data Systems（英文缩写SDS），是Max Palevsky于1961年在美国成立的一家计算机公司，也是最早在计算机设计中使用集成电路和硅晶体管的公司。SDS计算机主要针对大型科学计算，物美价廉。“太空竞赛”期间NASA曾购买了很多台SDS计算机。SDS在1969年被施乐（Xerox）公司收购，1975年由于管理不善和销售下滑被关闭。在施乐管理期间，该公司一度被称为XDS。——编者注</span></small></sub></p>
+<p class="calibre1">本书中用来展示示例的工具很多，但多数都容易获取，而且也很实用。只有少数工具目前还没有好用的Windows版本。如果你觉得哪个工具不好用，完全可以不用。但要真正学习正则表达式，我还是建议在Unix环境中学习。我使用Unix环境长达25年，每天仍然能够学到不少新东西。</p>
+<blockquote class="calibre12">“不懂Unix的人注定还要重新发明一个蹩脚的Unix。”——Henry Spencer<sup class="calibre9"><small class="calibre10"><span class="calibre10">〔2〕</span></small></sup></blockquote>
+<p class="calibre1"><sub class="calibre11"><small class="calibre10"><span class="calibre10">〔2〕 Henry Spencer是加拿大程序员，著名正则表达式库regex的作者。这个正则表达式库被许多程序包或编程语言采用，比如Perl、Tcl和MySQL，等等。在多伦多大学工作期间，Henry Spencer从1981年开始运作美国之外的第一个Usernet站点。这个站点后来被谷歌收购，作为1980年代Usernet的公开档案。另外，他还写过“10 Commandments for C Programmers”（C程序员十诫，</span><a href="http://www.seebs.net/c/10com.html"><span class="calibre10">http://www.seebs.net/c/10com.html</span></a><span class="calibre10">）。——编者注</span></small></sub></p>
+<p class="calibre1">部分工具可以通过浏览器在线使用，这对于许多读者是十分方便的。其余的工具需要使用命令行和shell脚本，还有一些工具是在桌面上运行的。如果你手头没有这些工具，从网上下载也很方便。其中大多数工具是免费的，偶尔有需要付费的也不贵。</p>
+<p class="calibre1">本书中不会出现很多专业术语。我会在必要的时候告诉你正确的术语，但这种情况很少。因为多年的经验表明，专业术语常会造成障碍。换句话说，我会尽可能用通俗易懂的语言描述正则表达式，以免你晕头转向不知所措。因为本书的理念是“略知大概，即可实践”。</p>
+<p class="calibre1">正则表达式的实现多种多样。你会发现在vi（vim）、grep及sed等Unix命令行工具中使用的正则表达式也可以在其他程序中见到。各种程序设计语言都支持正则表达式，比如Perl（当然啦<sup class="calibre9"><small class="calibre10"><span class="calibre10">〔3〕</span></small></sup>）、Java、JavaScript、C#、Ruby等。就连XSLT 2.0这样的声明式语言中也有正则表达式。你还会发现Notepad++、Oxygen及TextMate等应用程序同样支持正则表达式。</p>
+<p class="calibre1"><sub class="calibre11"><small class="calibre10"><span class="calibre10">〔3〕 Perl，后来被人们解释为Practical Extraction and Reporting Language的缩写。由这个非官方的“全称”——实用提取和报告语言——可知，Perl在处理文本文件和生成报表方面是非常强大的。1987年，Larry Wall在美国宾夕法尼亚州蓝铃（Blue Bell）地区的Unisys公司当程序员的时候发明了Perl。在该语言后来的发展中，正则表达式功能得到不断丰富和加强，最终成为Perl独树一帜的招牌特色。——编者注 </span></small></sub></p>
+<p class="calibre1">大多数正则表达式实现各有异同。本书不会逐一讨论它们的差异，但也会涉及一些。如果要我把<span class="bold">所有</span>实现的<span class="bold">全部</span>不同点都列出来，恐怕非得把我累吐了血不行。所以我在本书中就不纠缠这些细节了。总而言之，如果你期待一本正则表达式的入门书，那就选这本吧。</p>
+<div class="mbppagebreak" id="calibre_pb_5"></div>
+</body></html>

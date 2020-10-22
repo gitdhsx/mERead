@@ -2,7 +2,6 @@
   <div id="app">
     <div id="nav">
 
-      <!-- <span class="icon-back"></span> -->
     </div>
     <router-view/>
   </div>

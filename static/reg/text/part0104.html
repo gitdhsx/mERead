@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="335QG0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos392170" class="calibre1"><span class="calibre2"><span class="bold">术语表</span></span></p>
+<p class="calibre1"><span class="bold">ASCII</span><br class="calibre16"/> 美国信息交换标准代码（American Standard Code for Information Interchange）。它是1960年制定的一种针对英文（拉丁）字符的编码方案，含有128个字符。另见<span class="bold">Unicode</span>。</p>
+<p class="calibre1"><span class="bold">BRE</span><br class="calibre16"/> 见<span class="bold">基本正则表达式</span>。</p>
+<p class="calibre1"><span class="bold">ed</span><br class="calibre16"/> 实现正则表达式的一种Unix行编辑器，由Ken Thompson于1971年开发。它是sed和vi的前身。</p>
+<p class="calibre1"><span class="bold">ERE</span><br class="calibre16"/> 见<span class="bold">扩展正则表达式</span>。</p>
+<p class="calibre1"><span class="bold">grep</span><br class="calibre16"/> 使用正则表达式来查找字符串的Unix命令行工具。grep是由Ken Thompson于1973年开发，据说是由ed编辑器命令<tt class="calibre19">g/re/p</tt>（global/regular expression/print）发展而来。grep后来被egrep（或grep -E）取代，后者拥有更多元字符，如<tt class="calibre19">|</tt>、<tt class="calibre19">+</tt>、<tt class="calibre19">?</tt>、<tt class="calibre19">(</tt>和<tt class="calibre19">)</tt>，但并没有被淘汰。grep使用基本正则表达式，grep -E（或egrep）使用扩展正则表达式。fgrep（grep -F）使用文字字符串来查找文件，而像$、*和|这样的元字符没有特殊含义。见<span class="bold">基本正则表达式</span>、 <span class="bold">扩展的正则表达式</span>。</p>
+<p class="calibre1"><span class="bold">Perl</span><br class="calibre16"/> 一种通用程序设计语言，它由Larry Wall于1987年开发。Perl由于其对正则表达式的强大支持以及文本处理能力而闻名。见<a href="http://www.perl.org">http://www.perl.org</a>。</p>
+<p class="calibre1"><span class="bold">piece</span>（片段）<br class="calibre16"/> 在POSIX.1的术语中，为正则表达式的一部分，通常是连接起来的。参见<span class="bold">POSIX</span>。</p>
+<p class="calibre1"><span class="bold">POSIX</span><br class="calibre16"/> Unix可移植操作系统接口（Portable Operating System Interface for Unix）。由电子电气工程师协会（IEEE）制定的一系列有关Unix的标准。最近的正则表达式POSIX标准是POSIX.1-2008（参见<a href="http://standards.ieee.org/findstds/standard/1003.1-2008.html">http://standards.ieee.org/findstds/standard/1003.1-2008.html</a>）。</p>
+<p class="calibre1"><span class="bold">sed</span><br class="calibre16"/> 一种接受正则表达式并对文本进行转换的Unix流编辑器。20世纪70年代初由Lee McMahon于贝尔实验室开发。sed的一个示例：<tt class="calibre19">sed -n 's/this/that/g\' file.ext &gt; new.ext</tt>。sed的 -E选项表示要使用扩展正则表达式。另见<span class="bold">扩展正则表达式</span>。</p>
+<p class="calibre1"><span class="bold">Unicode</span><br class="calibre16"/> Unicode是一个将世界的各种书写系统字符进行编码的体系。Unicode中的每个字符都有一个数值代码点。Unicode支持的字符超过10万个。在正则表达式中，Unicode字符可指定为<tt class="calibre19">\uxxxx</tt>或<tt class="calibre19">\x{xxxx}</tt>，其中<span class="italic">x</span>表示一个范围为0-9、A-F（或a-f）的十六进制数，占用一位到四位。例如，<tt class="calibre19">\u00E9</tt>表示字符é，即小写拉丁字母e加一个重音符。另见<a href="http://www.unicode.org">http://www.unicode.org</a>。</p>
+<p class="calibre1"><span class="bold">vi</span><br class="calibre16"/> Bill Joy于1976年开发的一款使用正则表达式的Unix编辑器。vim编辑器是vi的改良版本，它最初由Bram Moolenaar开发（见<a href="http://www.vim.org">http://www.vim.org</a>）。我日常工作中通常会用到六七种编辑器，但用得最多的还是vim。事实上，如果我不幸遭遇海难流落到荒岛上，但还可以选择一个文本编辑器，我肯定会选择vim，毫无疑问。</p>
+<p class="calibre1"><span class="bold">vim</span><br class="calibre16"/> 见<span class="bold">vi</span>。</p>
+<p class="calibre1"><span class="bold">八进制字符</span>（octal character）<br class="calibre16"/> 正则表达式中的字符可以使用八进制表示。在正则表达式中，八进制形式的字符通过以下方法指定：[<tt class="calibre19">\oxx</tt>]\o_*xx*_，其中<span class="italic">x</span>表示1-9范围内的数，占用一位或两位。例如，\o表示字符é，小写拉丁字母e外加一个重音符。</p>
+<p class="calibre1"><span class="bold">标记符</span>（flag）<br class="calibre16"/> 见<span class="bold">修饰符</span>。</p>
+<p class="calibre1"><span class="bold">捕获分组</span>（capturing group）<br class="calibre16"/> 见<span class="bold">分组</span>。</p>
+<p class="calibre1"><span class="bold">出现约束</span>（occurrence constraint）<br class="calibre16"/> 见<span class="bold">量词</span>。</p>
+<p class="calibre1"><span class="bold">代码点</span>（code point）<br class="calibre16"/> 见<span class="bold">Unicode</span>。</p>
+<p class="calibre1"><span class="bold">断言</span>（assertion）<br class="calibre16"/> 参见<span class="bold">零宽度断言</span>。</p>
+<p class="calibre1"><span class="bold">分类表达式</span>（bracketed expression）<br class="calibre16"/> 方括号中的正则表达式，如<tt class="calibre19">[a-f]</tt>，即为a到f范围内的小写字母。另见<span class="bold">字符组</span>。</p>
+<p class="calibre1"><span class="bold">分支</span>（branch）<br class="calibre16"/> 在POSIX.1的术语中，表示正则表达式中多个部分的连接。另见<span class="bold">POSIX</span>。</p>
+<p class="calibre1"><span class="bold">分组</span>（group）<br class="calibre16"/> 分组将正则表达式原子组合放入一对括号<tt class="calibre19">()</tt>中。在grep或sed等应用程序中（不使用-E），你必须在括号前加一个反斜线，就像<tt class="calibre19">\)</tt>和<tt class="calibre19">\(</tt>。分组有捕获分组和非捕获分组两种。捕获分组将捕获的分组存储在内存中以便再次使用，而非捕获分组不会存储。原子分组不进行回溯。另见<span class="bold">原子分组</span>。</p>
+<p class="calibre1"><span class="bold">工作缓冲区</span>（work buffer）<br class="calibre16"/> 见<span class="bold">模式空间</span>。</p>
+<p class="calibre1"><span class="bold">反前瞻</span>（negative lookahead）<br class="calibre16"/> 见<span class="bold">前瞻</span>。</p>
+<p class="calibre1"><span class="bold">反后顾</span>（negative lookbehind）<br class="calibre16"/> 见<span class="bold">后顾</span>。</p>
+<p class="calibre1"><span class="bold">非捕获分组</span>（non-capuring group）<br class="calibre16"/> 在括号中不被捕获（即存储于内存以便将来使用）的分组。非捕获分组的语法是<tt class="calibre19">(?:pattern)</tt>。另见<span class="bold">分组</span>。</p>
+<p class="calibre1"><span class="bold">后顾</span>（lookbehind）<br class="calibre16"/> 一种正则表达式，它仅在另一个指定的正则表达式在其之前时才会匹配。正后顾使用语法<tt class="calibre19">(?&lt;=regex)regex</tt>。反后顾表示在该表达式之前的内容<span class="bold">不是</span>在其之前的正则表达式时才匹配。使用语法<tt class="calibre19">(?&lt;!regex)regex</tt>。</p>
+<p class="calibre1"><span class="bold">后向引用</span>（backreference）<br class="calibre16"/> 对之前用括号捕获的正则表达式内容进行引用，其形式是<tt class="calibre19">\1</tt>、<tt class="calibre19">\2</tt>等。</p>
+<p class="calibre1"><span class="bold">环视</span>（lookaround）<br class="calibre16"/> 见<span class="bold">前瞻</span>、<span class="bold">后顾</span>。</p>
+<p class="calibre1"><span class="bold">回溯</span> （backtracking）<br class="calibre16"/> 逐个字符回退，逐个尝试从而找到成功的匹配。用于贪心式匹配，不能在懒惰式或者占有式匹配中使用。正则表达式处理器数千次尝试匹配耗费非常多的计算资源会导致<span class="bold">灾难性回溯</span>。避免灾难性回溯的一种方法就是使用原子分组。另见<span class="bold">原子分组</span>、 <span class="bold">贪心式匹配</span>、 <span class="bold">懒惰式匹配</span>、 <span class="bold">占有式匹配</span>。</p>
+<p class="calibre1"><span class="bold">基本正则表达式</span>（basic regular expression）<br class="calibre16"/> 正则表达式的一种早期实现方式，较为落后，多数人认为它已经过时。一般简称为BRE，BRE要求对字符转义后才可作为元字符使用，例如括号（<tt class="calibre19">\{</tt>和<tt class="calibre19">\}</tt>）。另见<span class="bold">扩展正则表达式</span>。</p>
+<p class="calibre1"><span class="bold">可组合性</span>（composability）<br class="calibre16"/> “一种模式语言（或实际的程序设计语言）提供一些原子对象和一些构造方法。这些构造方法可以用来将原子对象组合为复合对象，然后这些复合对象又可以进一步组合为复合对象。语言的可组合性就是指构造的多种方法能够统一适用于该语言的所有对象，无论是原子对象还是复合对象……可组合性改善了易学性和易用性。可组合性还可能改善复杂度与功能之间的关系：对于给定的复杂度，语言的组合性越强，其功能就越强大。”引自James Clark的“The Design of RELAX NG”，参见<a href="http://www.thaiopensource.com/relaxng/design.html#section:5">http://www.thaiopensource.com/relaxng/design.html#section:5</a>。</p>
+<p class="calibre1"><span class="bold">扩展正则表达式</span>（extended regular expression）<br class="calibre16"/> 简称ERE，在基本正则表达式BRE的基础上添加了额外的功能，例如，选择操作（<tt class="calibre19">\|</tt>）以及量词（如<tt class="calibre19">？</tt>和<tt class="calibre19">+</tt>），egrep（extened grep）支持扩展正则表达式，因此都能进行以上操作。IEEE POSIX标准1003.2-1992对这些新特性进行了描述。grep使用-E选项（就和使用egrep一样）就表示使用扩展正则表达式而不是基本正则表达式。另见<span class="bold">选择操作</span>、 <span class="bold">基本正则表达式</span>、<span class="bold">grep</span>。</p>
+<p class="calibre1"><span class="bold">懒惰式匹配</span>（lazy match）<br class="calibre16"/> 在尝试寻找匹配时，懒惰式匹配一次只消耗目标字符串的一个字符。它不进行回溯。另见<span class="bold">回溯</span>、 <span class="bold">贪心式匹配</span>、 <span class="bold">占有式匹配</span>。</p>
+<p class="calibre1"><span class="bold">量词</span>（quantifier）<br class="calibre16"/> 设定在尝试匹配时正则表达式会出现的次数。一种形式是括号中包含一个整数或由逗号分隔的一对整数，如<tt class="calibre19">{3}</tt>表示表达式会出现3次（对于使用基本正则表达式的旧工具程序，必须将括号转义，就像<tt class="calibre19">\{3\}</tt>）。<br class="calibre16"/> 其他的量词有<tt class="calibre19">?</tt>（零次或一次）、<tt class="calibre19">+</tt>（一次或多次）、<tt class="calibre19">*</tt>（零次或多次）。量词也为限定符（bound）或修饰符（modifier）。量词自身是贪心式的。此外还有懒惰量词（如<tt class="calibre19">{3}?</tt>）和占有量词（如<tt class="calibre19">{3}+</tt>）。另见<span class="bold">基本正则表达式</span>、 <span class="bold">贪心式匹配</span>、 <span class="bold">懒惰式匹配</span>、 <span class="bold">占有式匹配</span>。</p>
+<p class="calibre1"><span class="bold">零宽度断言</span>（zero-width assertion）<br class="calibre16"/> 在匹配过程中不会消耗字符的边界。如<tt class="calibre19">^</tt>和<tt class="calibre19">$</tt>，分别匹配行起始和行结束。</p>
+<p class="calibre1"><span class="bold">锚位符</span> （anchor）<br class="calibre16"/> 指定行或字符串中的位置。例如，脱字符（也叫音调符<tt class="calibre19">^</tt>）表示行或字符串的起始，而美元符（<tt class="calibre19">$</tt>）则表示行或字符串的结束。</p>
+<p class="calibre1"><span class="bold">模式空间</span>（pattern space）<br class="calibre16"/> sed程序通常逐行处理输入内容。在处理每一行时，该行的内容就被放入<span class="bold">模式空间</span>中，在该空间中就会应用模式。这也被称为<span class="bold">工作缓冲区</span>（work buffer）。见<span class="bold">容纳空间</span>、<span class="bold">sed</span>。</p>
+<p class="calibre1"><span class="bold">匹配</span>（matching）<br class="calibre16"/> 正则表达式会在文件中匹配指定的模式，然后根据应用程序要求触发结果。</p>
+<p class="calibre1"><span class="bold">前瞻</span>（lookahead）<br class="calibre16"/> 一种正则表达式，它仅在另一个指定的正则表达式尾随其后时才会匹配。正前瞻使用语法<tt class="calibre19">regex(?=regex)</tt>。反前瞻表示尾随该表达式的内容不是尾随其后的正则表达式时才匹配。使用语法<tt class="calibre19">regex(?!regex)</tt>。</p>
+<p class="calibre1"><span class="bold">取反操作</span>（negation）<br class="calibre16"/> 表示一个正则表达式不匹配给定的模式。</p>
+<p class="calibre1"><span class="bold">容纳缓冲区</span>（hold buffer）<br class="calibre16"/> 见<span class="bold">容纳空间</span>。</p>
+<p class="calibre1"><span class="bold">容纳空间</span>（hold space）<br class="calibre16"/> sed用于存储一行或多行以便进行进一步处理的空间。也称为<span class="bold">容纳缓冲区</span>。参见<span class="bold">模式空间</span>、<span class="bold">sed</span>。</p>
+<p class="calibre1"><span class="bold">十六进制</span>（hexadecimal）<br class="calibre16"/> 由数字0-9和字母A-F或a-f表示的基数为16的计数系统。例如，十进制数15在十六进制中表示为F，而16在十六进制中表示为10。</p>
+<p class="calibre1"><span class="bold">贪心式匹配</span>（greedy match）<br class="calibre16"/> 贪心式匹配会尽可能多地消耗目标字符串中的字符，然后在字符串中回溯来尝试寻找匹配。见<span class="bold">回溯</span>、<span class="bold">懒惰式匹配</span>和<span class="bold">占有式匹配</span>。</p>
+<p class="calibre1"><span class="bold">限定符</span>（bound）<br class="calibre16"/> 见量词（quantifier）。</p>
+<p class="calibre1"><span class="bold">修饰符</span>（modifier）<br class="calibre16"/> 放在匹配或替换模式之后的字符，它会对匹配过程进行修改。例如，i修饰符会将匹配变为不区分大小写。修饰符也称为<span class="bold">标记符</span>。</p>
+<p class="calibre1"><span class="bold">选项</span>（option）<br class="calibre16"/> 允许你开启或关闭选项来修改匹配内容。例如，<tt class="calibre19">(?i)</tt>选项表示匹配是不分大小写的。这与修饰符功能相似，但是所用的语法不同。另见<span class="bold">修饰符</span>。</p>
+<p class="calibre1"><span class="bold">选择操作</span> （alternation）<br class="calibre16"/> 用竖线符（<tt class="calibre19">|</tt>）将几个正则表达式分隔，表示“或”操作。也就是说，由一个或多个<tt class="calibre19">|</tt>分隔的任何一个正则表达式匹配即可。在某些应用程序中，就像使用基本正则表达式（BRE）的grep或sed，则需要在<tt class="calibre19">|</tt>之前加一个反斜线符号<tt class="calibre19">\|</tt>。另见<span class="bold">基本正则表达式</span>。</p>
+<p class="calibre1"><span class="bold">原子</span>（atom ）<br class="calibre16"/> 参见<span class="bold">元字符</span>。</p>
+<p class="calibre1"><span class="bold">原子分组</span>（atomic group）<br class="calibre16"/> 一种分组模式，当<tt class="calibre19">(?&gt;…)</tt>中的正则表达式无法匹配时，就关闭回溯操作。另见<span class="bold">回溯</span>、 <span class="bold">分组</span>。</p>
+<p class="calibre1"><span class="bold">元字符</span>（metacharacter）<br class="calibre16"/> 一种在正则表达式中有特殊含义的字符。这些字符是<tt class="calibre19">.</tt>、<tt class="calibre19">\</tt>、 <tt class="calibre19">\|</tt>、<tt class="calibre19">*</tt>、<tt class="calibre19">+</tt>、<tt class="calibre19">?</tt>、<tt class="calibre19">~</tt>、<tt class="calibre19">$</tt>、<tt class="calibre19">[</tt>、<tt class="calibre19">]</tt>、 <tt class="calibre19">(</tt>、 <tt class="calibre19">)</tt>、<tt class="calibre19">{</tt>、<tt class="calibre19">}</tt>。元字符也称为<span class="bold">原子</span>。</p>
+<p class="calibre1"><span class="bold">灾难性回溯</span>（catastrophic backtracking）<br class="calibre16"/> 参见<span class="bold">回溯</span>。</p>
+<p class="calibre1"><span class="bold">占有式匹配</span>（possessive match）<br class="calibre16"/> 在尝试寻找匹配时，占有式匹配一次直接消耗整个字符串。它不进行回溯。另见<span class="bold">回溯</span>、 <span class="bold">贪心式匹配</span>、 <span class="bold">懒惰式匹配</span>。</p>
+<p class="calibre1"><span class="bold">正前瞻</span>（positive lookahead）<br class="calibre16"/> 见前瞻。</p>
+<p class="calibre1"><span class="bold">正后顾</span>（positive lookbehind）<br class="calibre16"/> 见后顾。</p>
+<p class="calibre1"><span class="bold">正则表达式</span>（regular expression）<br class="calibre16"/> 一种经过特别编写的字符串，在应用或工具程序中使用时可以匹配其他的字符串或字符串集合。20世纪50年代，数学家Stephen Kleene（1909—1994）在1952年出版的<span class="italic">Introduction to Metamathematics</span>一书中，讲到有关形式语言理论的工作时首次描述了正则表达式。Ken Thompson等人有关QED编辑器（在运行于GE-635上的通用电气分时系统中）的工作，以及20世纪70年代早期AT&amp;T贝尔实验室的Unix操作系统中其他工具程序的开发推动了正则表达式在计算机领域的发展。</p>
+<p class="calibre1"><span class="bold">转义字符</span>（character escape）<br class="calibre16"/> 前面带有反斜线的字符。例如，<tt class="calibre19">\t</tt>（水平制表符）、<tt class="calibre19">\v</tt>（垂直制表符）和<tt class="calibre19">\f</tt>（换页符）。</p>
+<p class="calibre1"><span class="bold">字符集</span>（character set）<br class="calibre16"/> 见<span class="bold">字符组</span>。</p>
+<p class="calibre1"><span class="bold">字符组</span>（character class）<br class="calibre16"/> 通常是指包括在方括号中的一组字符，例如<tt class="calibre19">[a-bA-B0-9]</tt>就是一个字符组，它表示ASCII或者基本拉丁（Low Basic Latin）字符集范围内的所有的大小写字符以及数字。</p>
+<p class="calibre1"><span class="bold">字符串字面值</span>（string literal）<br class="calibre16"/> 仅从文字字面上解释的字符串，如文字字符串“It is an ancient Marinere”，对比“[Ii]t[ ]is[ ].*nere.”这类字符串。</p>
+<p class="calibre1"><span class="bold">字面值</span>（literal）<br class="calibre16"/> 见<span class="bold">字符串字面值</span>。</p>
+<p class="calibre4"> </p>
+<div class="mbppagebreak" id="calibre_pb_104"></div>
+</body></html>

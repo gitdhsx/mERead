@@ -4,16 +4,40 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 import Ebook from '@/Ebook'
+const Shelf = () => import('views/shelf/Shelf')
+const Page= () => import('views/page/Page')
+const Store= () => import('views/store/Store')
+const Profile= () => import('views/profile/Profile')
 
 const routes = [
   {
     path: '/',
-    redirect: '/ebook'
+    redirect: '/shelf'
   },
   {
     path: '/ebook',
     name: 'Ebook',
     component: Ebook
+  },
+  {
+    path: '/shelf',
+    name: 'Shelf',
+    component: Shelf
+  },
+  {
+    path: '/page',
+    name: 'Page',
+    component: Page
+  },,
+  {
+    path: '/store',
+    name: 'Store',
+    component: Store
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   }
 ]
 

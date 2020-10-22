@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="SJGS0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos69070" class="calibre20"><span class="calibre8"><span class="bold">2.5 匹配空白符</span></span></p>
+<p class="calibre1">可以用以下简写式匹配空白符：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">\s<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">请在RegExr试一试并看看高亮的部分（参见图2-5）。以下字符组与<tt class="calibre19">\s</tt>匹配的内容相同：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[ \t\n\r]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20"><img class="calibre37" src="../images/00011.jpeg"/><br class="calibre16"/><span class="bold">图2-5 在RegExr中用</span><tt class="calibre19"><span class="bold">\s</span></tt><span class="bold">匹配空白符</span></p>
+<p class="calibre1">也就是说，它会匹配：</p>
+<div class="calibre13"> </div>
+<ul class="calibre14"><li class="calibre15" value="1">空格</li><li class="calibre15" value="2">制表符（<tt class="calibre19">\t</tt>）</li><li class="calibre15" value="3">换行符（<tt class="calibre19">\n</tt>）</li><li class="calibre15" value="4">回车符（<tt class="calibre19">\r</tt>）</li></ul><blockquote class="calibre12">在RegExr中空格符与制表符会被标亮，但换行符和回车符则不会。</blockquote>
+<p class="calibre1">可想而知，<tt class="calibre19">\s</tt>也有对应的大写形式。要匹配非空白字符，则使用：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">\S<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">这个简写式匹配除空白符之外的所有符号。它匹配字符组：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[^ \t\n\r]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">或者是：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[^\s]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">请在RegExr中试一下看看会发生什么。</p>
+<p class="calibre1">除了<tt class="calibre19">\s</tt>匹配的字符之外，还有其他不太常见的空白字符。表2-2列出了匹配常见和不太常见的空白字符的简写式。</p>
+<p class="calibre1"><span class="bold">表2-2 匹配各种空白符的简写式</span></p>
+<p class="calibre4"> </p><table class="calibre31" valign="top"><tbody class="calibre32"><tr valign="top" class="calibre33"><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 字符简写式 </span></span></th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 描述 </span></span></th></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> \f </span></td><td valign="top" class="calibre36"><span class="calibre18"> 换页符 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> \h </span></td><td valign="top" class="calibre36"><span class="calibre18"> 水平空白符 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> \H </span></td><td valign="top" class="calibre36"><span class="calibre18"> 非水平空白符 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> \n </span></td><td valign="top" class="calibre36"><span class="calibre18"> 换行符 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> \r </span></td><td valign="top" class="calibre36"><span class="calibre18"> 回车符 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> \s </span></td><td valign="top" class="calibre36"><span class="calibre18"> 空白符 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> \S </span></td><td valign="top" class="calibre36"><span class="calibre18"> 非空白符 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> \t </span></td><td valign="top" class="calibre36"><span class="calibre18"> 水平制表符 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> \v </span></td><td valign="top" class="calibre36"><span class="calibre18"> 垂直制表符 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> \V </span></td><td valign="top" class="calibre36"><span class="calibre18"> 非垂直制表符 </span></td></tr></tbody></table>
+<div class="mbppagebreak" id="calibre_pb_30"></div>
+</body></html>

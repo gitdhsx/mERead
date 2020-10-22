@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="J2B80-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos42112" class="calibre1"><span class="calibre8"><span class="bold">1.7 使用量词</span></span></p>
+<p class="calibre1">现在用另一种语法来匹配电话号码：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">\d{3}-?\d{3}-?\d{4}<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">花括号中的数字表示待查找的数字出现的次数。包含数字的花括号是一种<span class="bold">量词</span>（quantifier）。花括号本身用做元字符。</p>
+<p class="calibre1">问号是另一种量词，在以上表达式中表示连字符是可选的。也就是说，连字符可以不出现或只出现一次。还有其他的量词，例如加号（<tt class="calibre19">+</tt>）表示“一个或多个”，星号（<tt class="calibre19">*</tt>）表示“零个或多个”。</p>
+<p class="calibre1">使用量词能让正则表达式变得更简洁：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19"> (\d{3,4}[.-]?)+<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">对，加号表示出现一次或多次。这个正则表达式表示括号里的模式出现一次或多次，括号里的模式匹配三位或四位数字，后跟一个连字符或一个点号。</p>
+<p class="calibre1">你有没有头晕呢？我希望没有。下面逐一解释表达式中的每一项 ：</p>
+<div class="calibre13"> </div>
+<ul class="calibre14"><li class="calibre15" value="1">
+<p class="calibre1">左圆括号<tt class="calibre19">(</tt>为捕获分组的起始符；</p>
+</li><li class="calibre15" value="2">
+<p class="calibre1">反斜杠<tt class="calibre19">\</tt>为字符组简写式的起始符（对之后的字符进行转义）；</p>
+</li><li class="calibre15" value="3">
+<p class="calibre1">字符<tt class="calibre19">d</tt>为字符组简写式的结束符（<tt class="calibre19">d</tt>匹配0到9范围内的任意数字）；</p>
+</li><li class="calibre15" value="4">
+<p class="calibre1">左花括号<tt class="calibre19">{</tt>为量词起始符；</p>
+</li><li class="calibre15" value="5">
+<p class="calibre1">数字<tt class="calibre19">3</tt>为匹配的最小数量；</p>
+</li><li class="calibre15" value="6">
+<p class="calibre1">逗号<tt class="calibre19">,</tt>隔开不同的数量；</p>
+</li><li class="calibre15" value="7">
+<p class="calibre1">数字<tt class="calibre19">4</tt>为匹配的最大数量；</p>
+</li><li class="calibre15" value="8">
+<p class="calibre1">右花括号<tt class="calibre19">}</tt>为量词的结束符；</p>
+</li><li class="calibre15" value="9">
+<p class="calibre1">左方括号<tt class="calibre19">[</tt>为字符组的起始符；</p>
+</li><li class="calibre15" value="10">
+<p class="calibre1">点号<tt class="calibre19">.</tt>（匹配点号本身）；</p>
+</li><li class="calibre15" value="11">
+<p class="calibre1">连字符<tt class="calibre19">-</tt>匹配连字符的本身；</p>
+</li><li class="calibre15" value="12">
+<p class="calibre1">右方括号<tt class="calibre19">]</tt>为字符组的结束符；</p>
+</li><li class="calibre15" value="13">
+<p class="calibre1">问号<tt class="calibre19">?</tt>表示量词“零个或一个”；</p>
+</li><li class="calibre15" value="14">
+<p class="calibre1">右圆括号<tt class="calibre19">)</tt>为捕获分组的结束符；</p>
+</li><li class="calibre15" value="15">
+<p class="calibre1">加号<tt class="calibre19">+</tt>表示量词“一个或多个”。</p>
+</li></ul>
+<p class="calibre1">这个表达式能用但不完全对，因为它只能匹配3位或4位的数字，而不管是否符合电话号码的格式。好吧，犯错会让我们印象深刻，进步得更快。</p>
+<p class="calibre1">我们来改进一下：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">(\d{3}[.-]?){2}\d{4}<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">这个表达式匹配的字符串是连续两个无括号的三位数字，每三位数字后可以带连字符也可以不带，最后是一个四位数字。</p>
+<div class="mbppagebreak" id="calibre_pb_20"></div>
+</body></html>

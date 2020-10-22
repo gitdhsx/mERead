@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="1BRPS0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos129530" class="calibre1"><span class="calibre8"><span class="bold">4.3 捕获分组和后向引用</span></span></p>
+<p class="calibre1">当一个模式的全部或者部分内容由一对括号分组时，它就对内容进行捕获并临时存储于内存中。可以通过后向引用重用捕获的内容，形式为：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">\1<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">或</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">$1<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">这里<tt class="calibre19">\1</tt>或<tt class="calibre19">$1</tt>引用的是第一个捕获的分组，而<tt class="calibre19">\2</tt>或<tt class="calibre19">$2</tt>引用第二个捕获的分组，以此类推。sed只接受<tt class="calibre19">\1</tt>这种形式，而Perl则两种都接受。</p>
+<blockquote class="calibre12">最开始sed支持范围从<tt class="calibre19">\1</tt>到<tt class="calibre19">\9</tt>的后向引用，但现在已经没有这样的限制了。</blockquote>
+<p class="calibre1">下面再展示一下后向引用的使用方法。我们将使用它来重新排序诗文中的一行词，在此先跟作者柯勒律治道个歉。点击RegExr的Repalce标签，在顶部的文本框中输入下面的模式：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">(It is) (an ancyent Marinere)<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">向下滚动主文本框（第三个文本区）直到你可以看到被标亮的那一行，然后在第二个文本框中，输入：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">$2 $1<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">就可以看到在最下面的文本框中那一行被重新排列为：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">an ancyent Marinere It is,<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">结果参见图4-2。</p>
+<p class="calibre21"><img class="calibre43" src="../images/00018.jpeg"/></p>
+<p class="calibre1"><span class="bold">图4-2 用</span><tt class="calibre19"><span class="bold">$1</span></tt><span class="bold">和</span><tt class="calibre19"><span class="bold">$2</span></tt><span class="bold">进行后向引用</span></p>
+<p class="calibre1">要用sed得到相同结果，可以这样做：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">sed -En 's/(It is) (an ancyent Marinere)/\2 \1/p' rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">输出为：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">an ancyent Marinere It is,<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">和RegExr中一样。为了帮助你理解每个细节，下面我们来分析一下这个sed命令。</p>
+<div class="calibre13"> </div>
+<ul class="calibre14"><li class="calibre15" value="1"><tt class="calibre19">-E</tt>选项仍然是调用ERE（扩展的正则表达式），因此，括号可以直接当成字面值来使用了。</li><li class="calibre15" value="2"><tt class="calibre19">-n</tt>选项覆盖打印每一行的默认设置。</li><li class="calibre15" value="3">替换命令搜索与文本“It is an ancyent Marinere,”匹配的内容，再将其捕获放入两个分组中。</li><li class="calibre15" value="4">替换命令还将捕获的文本重排为先是后向引用\2的内容再是\1的内容，再将匹配的文本替换为重排后的内容并输出。</li><li class="calibre15" value="5">替换命令结尾处的<tt class="calibre19">p</tt>表示要打印该行。</li></ul>
+<p class="calibre1">Perl中类似的命令会做相同的事：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">perl -ne 'print if s/(It is) (an ancyent Marinere)/\2 \1/' rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">注意该命令使用了<tt class="calibre19">\1</tt>风格的语法。当然，你也可以使用<tt class="calibre19">$1</tt>语法：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">perl -ne 'print if s/(It is) (an ancyent Marinere)/$2 $1/' rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">我喜欢Perl允许不必在循环中跳转就能打印指定行的方式。</p>
+<p class="calibre1">但关于输出，还有一点要注意的是：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">an ancyent Marinere It is,<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">在转换过程中某些单词首字母的大小写被打乱了。Perl可以使用<tt class="calibre19">\u</tt>和<tt class="calibre19">\l</tt>来修正这个问题，就是这样：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">perl -ne 'print if s/(It is) (an ancyent Marinere)/\u$2 \l$1/' rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">现在结果看起来好多了：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">An ancyent Marinere it is,<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">接下来解释一下原因。</p>
+<div class="calibre13"> </div>
+<ul class="calibre14"><li class="calibre15" value="1"><tt class="calibre19">\l</tt>语法并不匹配任何字符，而是会将紧接其后的字母变为小写。</li><li class="calibre15" value="2"><tt class="calibre19">\u</tt>语法将紧接其后的字母变为大写。</li><li class="calibre15" value="3"><tt class="calibre19">\U</tt>指令（未展示）将紧接其后的文本字符串全部变为大写。</li><li class="calibre15" value="4"><tt class="calibre19">\L</tt>指令（未展示）将紧接其后的文本字符串全部变为小写。</li></ul>
+<p class="calibre1">这些指令在文本中出现其他指令（比如<tt class="calibre19">\l</tt>或<tt class="calibre19">\E</tt>，作为文字使用的字符串的结尾）之前都是起作用的。请自己动手试试这些指令。</p>
+<p id="filepos135133" class="calibre1"><span class="calibre38"><span class="bold">命名分组</span></span></p>
+<p class="calibre1"><span class="bold">命名分组</span>（named group）就是有名字的分组。这样，就可以通过名字（而不是数字）来引用分组。下面展示一下Perl语言中如何使用命名分组：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">perl -ne 'print if s/(?&lt;one&gt;It is) (?&lt;two&gt;an ancyent Marinere)/\u$+{two}\l$+{one}/' rime.txt<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">我们来看看这个命令：</p>
+<div class="calibre13"> </div>
+<ul class="calibre14"><li class="calibre15" value="1">在括号内添加<tt class="calibre19">?&lt;one&gt;</tt>和<tt class="calibre19">?&lt;two&gt;</tt>将分组分别命名为one和two；</li><li class="calibre15" value="2"><tt class="calibre19">$+{one}</tt>引用名为one的分组，而<tt class="calibre19">$+{two}</tt>则引用名为two的分组。</li></ul>
+<p class="calibre1">如果在一个模式中有分组被命名，那么你还可以重用该命名分组。解释一下这句话的意思，假设你要查找含有连续六个0的字符串：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">000000<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">这个例子很浅显，但可以说明其工作原理。用这一模式对连续三个0的分组命名（其中z是分组名，可以任意取）：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">(?&lt;z&gt;0{3})<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">然后你可以再使用该分组，就像这样：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">(?&lt;z&gt;0{3})\k&lt;z&gt;<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">或者：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">(?&lt;z&gt;0{3})\k'z'<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">或者：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">(?&lt;z&gt;0{3})\g{z}<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">请在RegExr中尝试一下看看结果。这些示例应该都能用。表4-3列出了命名分组可能使用的各种语法。</p>
+<p class="calibre1"><span class="bold">表4-3 命名分组的语法</span></p>
+<p class="calibre4"> </p><table class="calibre31" valign="top"><tbody class="calibre32"><tr valign="top" class="calibre33"><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 语法 </span></span></th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 描述 </span></span>
+</th></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18">  (?&lt;name&gt;…)  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 命名分组 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18">  (?name…)  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 另一种命名分组的方式 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> (?P&lt;name&gt;…) </span></td><td valign="top" class="calibre36"><span class="calibre18">  Python中的命名分组 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> \k&lt;name&gt; </span></td><td valign="top" class="calibre36"><span class="calibre18"> 在Perl中引用分组名 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18">  \k'name'  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 在Perl中引用分组名 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18">  \g{name}  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 在Perl中引用分组名 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18">  \k{name}  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 在.NET中中引用分组名 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18">  (?P=name)  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 在Python中中引用分组名 </span></td></tr></tbody></table>
+<div class="mbppagebreak" id="calibre_pb_46"></div>
+</body></html>

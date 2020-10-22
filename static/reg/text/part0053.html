@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="1IHDQ0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos151160" class="calibre1"><span class="calibre8"><span class="bold">5.3 POSIX字符组</span></span></p>
+<p class="calibre1">POSIX（Portable Operating System Interface，可移植操作系统接口）是IEEE维护的一系列标准。其中包含了一个正则表达式标准（ISO/IEC/IEEE 9945:2009），该标准提供了一套命名的字符组，其形式为：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[[:xxxx:]]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">其中<tt class="calibre19">xxxx</tt>是名字，比如digit或者word。</p>
+<p class="calibre1">要匹配字母及数字，可以用：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[[:alnum:]]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">图5-6展示的是在Rubular中使用字母及数字字符组的情况。</p>
+<p class="calibre21"><img class="calibre49" src="../images/00024.jpeg"/></p>
+<p class="calibre1"><span class="bold">图5-6 在Rubular中使用POSIX字母及数字字符组</span></p>
+<p class="calibre1">还有一种方法就是只用简写式<tt class="calibre19">\w</tt>。哪种方法写起来简便，是POSIX字符组还是简写式？当然是字符最少的方法胜出。我承认自己并不常使用POSIX字符组，但是还是有必要了解一下。</p>
+<p class="calibre1">对于大写或小写的字母，使用：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[[:alpha:]]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">如果你想匹配ASCII范围内的字符，则用：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[[:ascii:]]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">当然，还有对POSIX字符组取反的形式：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[[:^xxxx:]]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">如果想匹配非字母字符，可以使用：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[[:^alpha:]]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">要匹配空格或制表符，使用：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[[:space:]]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">若匹配所有空白字符，则用：</p>
+<blockquote class="calibre12"><span class="calibre18"><tt class="calibre19">[[:blank:]]<br class="calibre16"/></tt></span></blockquote>
+<p class="calibre20">还有很多POSIX字符组，如表5-1示。</p>
+<p class="calibre1"><span class="bold">表5-1 POSIX字符组</span></p>
+<p class="calibre4"> </p><table class="calibre31" valign="top"><tbody class="calibre32"><tr valign="top" class="calibre33"><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 字符组 </span></span></th><th valign="top" class="calibre34"><span class="calibre18"><span class="bold"> 描述 </span></span>
+</th></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18">  [[:alnum:]]  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配字母及数字 </span> </td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> [[:alpha:]] </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配字母 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> [[:ascii:]] </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配ASCII字符（共128个） </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> [[:blank:]] </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配空白字符 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18">  [[:ctrl:]]  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配控制字符 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18">  [[:digit:]]  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配数字 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18"> [[:graph:]]  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配图形字符 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18">  [[:lower:]] </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配小写字母 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18">  [[:print:]]  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配可打印字符 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> [[:punct:]]  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配标点符号 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18">  [[:space:]]  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配空格字符 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> [[:upper:]] </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配大写字母 </span></td></tr><tr valign="top" class="calibre35"><td valign="top" class="calibre36"><span class="calibre18">  [[:word:]]  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配单词字符 </span></td></tr><tr valign="top" class="calibre33"><td valign="top" class="calibre36"><span class="calibre18"> [[:xdigit:]]  </span></td><td valign="top" class="calibre36"><span class="calibre18"> 匹配十六进制数字 </span></td></tr></tbody></table>
+<p class="calibre20">下一章专门介绍如何匹配Unicode和其他字符。</p>
+<div class="mbppagebreak" id="calibre_pb_53"></div>
+</body></html>

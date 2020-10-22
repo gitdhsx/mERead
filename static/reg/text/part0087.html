@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>学习正则表达式 (图灵程序设计丛书)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre" id="2IV0U0-13f7b649a4a84a279903cc97504f6ac8">
+<p id="filepos253890" class="calibre1"><span class="calibre8"><span class="bold">10.2 工具、实现程序以及程序库</span></span></p>
+<p class="calibre1">本书已经展示了很多工具、实现程序以及程序库。在此我们再回顾一下，并了解几个新的。</p>
+<p id="filepos254144" class="calibre1"><span class="calibre38"><span class="bold">10.2.1 Perl</span></span></p>
+<p class="calibre1">Perl是一个流行的通用编程语言。在通过正则表达式处理文本时，很多人更喜欢使用Perl语言，而不是其他语言。你可能已经安装了Perl，但我们还是得提一下，要获取有关如何在系统中安装Perl的信息，请访问<a href="http://www.perl.org/get.html">http://www.perl.org/get.html</a>。请到<a href="http://perldoc.perl.org/perlre.html">http://perldoc.perl.org/perlre.html</a>阅读有关Perl的正则表达式的内容。当然，不要误解，我的意思并非是让大家都来学习Perl。在其他很多语言中同样可以用正则表达式出色地完成任务，但有必要在你的工具箱中保留Perl。要深入学习Perl，你可以买一本Randal Schwartz、brian d foy和Tom Phoenix合著的<span class="italic">Learning Perl, Sixth Edition<sup class="calibre9"><small class="calibre10"><span class="calibre10">1</span></small></sup></span> ，该书也是由O'Reilly出版的。</p>
+<blockquote class="calibre12"><sup class="calibre9"><small class="calibre10"><span class="calibre10">1</span></small></sup>中文版《Perl语言入门（第6版）》已由东南大学出版社出版（2012）。——编者注</blockquote>
+<p id="filepos255346" class="calibre1"><span class="calibre38"><span class="bold">10.2.2 PCRE</span></span></p>
+<p class="calibre1">PCRE（Perl Compatible Regular ExpressionPerl，Perl兼容正则表达式）是一个用C语言编写的（8位和16位）的正则表达式库，参见<a href="http://www.pcre.org">http://www.pcre.org</a>。该程序库主要包含一些函数，它们可以在任何C语言框架以及任何可使用C程序库的其他语言中被调用。从名字可以看出，它兼容Perl 5正则表达式，而且包含其他正则表达式实现程序的一些特性。Notepad++编辑器就使用了PCRE库。</p>
+<p class="calibre1">pcregrep是一个类似grep的8位工具程序，它可以让你在命令行中使用PCRE的特性。我们在第3章中使用过这个工具。关于下载信息请参见<a href="http://www.pcre.org">http://www.pcre.org</a>。可通过Macports（<a href="http://www.macports.org">http://www.macports.org</a>）获取Mac版的pcregrep，运行命令<tt class="calibre19">sudo port install pcre</tt>即可（必须预先安装Xcode；见<a href="http://developer.apple.com/technologies/tools/">https://developer.apple.com/technologies/tools/</a>，需要注册）。要在Windows平台（二进制文件）上安装pcregrep，请参考<a href="http://gnuwin32.sourceforge.net/packages/pcre.htm">http://gnuwin32.sourceforge.net/packages/pcre.htm</a>。</p>
+<p id="filepos256717" class="calibre1"><span class="calibre38"><span class="bold">10.2.3 Ruby（Oniguruma）</span></span></p>
+<p class="calibre1">Oniguruma是Ruby 1.9内置的正则表达式库（参见<a href="http://oniguruma.rubyforge.org/">http://oniguruma.rubyforge.org/</a>）。它是用C语言编写的，专门支持Ruby。可以用Rubular测试Ruby正则表达式，这个在线应用程序支持版本1.8.7和版本1.9.2（见<a href="http://www.rubular.com">http://www.rubular.com</a>和图10-1）。顺便说一句，TextMate就使用了Oniguruma库。</p>
+<p class="calibre21"><img class="calibre57" src="../images/00034.jpeg"/></p>
+<p class="calibre1"><span class="bold">图10-1 用Rubular匹配电话号码的正则表达式</span></p>
+<p id="filepos257465" class="calibre1"><span class="calibre38"><span class="bold">10.2.4 Python</span></span></p>
+<p class="calibre1">Python是一种支持正则表达式的通用编程语言（参见<a href="http://www.python.org">http://www.python.org</a>），由Guido van Rossum于1991年开发。可以在以下链接阅读有关Python 3正则表达式的内容：<a href="http://docs.python.org/py3k/library/re.html?highlight=regular%20expressions">http://docs.python.org/py3k/library/re.html?highlight=regular%20expressions</a>。</p>
+<p id="filepos257974" class="calibre1"><span class="calibre38"><span class="bold">10.2.5 RE2</span></span></p>
+<p class="calibre1">RE2是个非回溯的C++正则表达式库（<a href="http://code.google.com/p/re2">http://code.google.com/p/re2</a>）。虽然RE2的速度很快，但是它不做回溯操作和后向引用。它是以Perl的CPAN包的形式来使用的，后向引用要依赖Perl的本地程序库来完成。关于API的内容，请参见<a href="http://code.google.com/p/re2/wiki/CplusplusAPI">http://code.google.com/p/re2/wiki/CplusplusAPI</a>。<a href="http://swtch.com/~rsc/regexp/regexp3.html">http://swtch.com/~rsc/regexp/regexp3.html</a>上这个题为“Regular Expression Matching in the Wild”的文章非常有趣，大家可以读读。</p>
+<div class="mbppagebreak" id="calibre_pb_87"></div>
+</body></html>
