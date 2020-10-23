@@ -2,6 +2,7 @@
 node_modules
 /dist
 otherr
+/static
 
 # local env files
 .env.local

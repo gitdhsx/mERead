@@ -8,7 +8,8 @@ import getters from './getters'
 Vue.use(Vuex)
 
 const state = {
-  bookList: []
+  bookList: [],
+  book: null,
 }
 
 export default new Vuex.Store({

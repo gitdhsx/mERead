@@ -106,6 +106,7 @@ export default {
         this.rendition.next();
       }
     },
+    
   },
 
   mounted() {
