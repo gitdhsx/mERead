@@ -1,20 +1,28 @@
 <template>
-  <div id="titlebar">
-    <div class="left">
-      <span class="icon-back icon"></span>
+  <transition name="slide">
+    <div id="titlebar" >
+      <div class="left">
+        <span class="icon-back icon"></span>
+      </div>
+      <div class="center"></div>
+      <div class="right">
+        <div class="icon-wrapper"><span class="icon-cart icon"></span></div>
+        <div class="icon-wrapper"><span class="icon-person icon"></span></div>
+        <div class="icon-wrapper"><span class="icon-more icon"></span></div>
+      </div>
     </div>
-    <div class="center"></div>
-    <div class="right">
-      <div class="icon-wrapper"><span class="icon-cart icon"></span></div>
-      <div class="icon-wrapper"><span class="icon-person icon"></span></div>
-      <div class="icon-wrapper"><span class="icon-more icon"></span></div>
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
 export default {
   name: "TitleBar",
+  props: {
+    isShow: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 
@@ -35,7 +43,7 @@ export default {
     flex: 0 0 px2rem(60);
     @include center;
   }
-  .center{
+  .center {
     background: #ae8;
   }
   .right {
@@ -46,6 +54,17 @@ export default {
       flex: 0 0 px2rem(40);
       @include center;
     }
+  }
+  &.slide-enter,
+  &.slide-leave-to {
+    transform: translate3d(0, -100%, 0);
+  }
+  &.slide-enter-to,
+  &.slide-leave {
+    transform: translate3d(0, 0, 0);
+  }
+  &.slide-enter-active &.slide-leave-acitve {
+    transition: all 2s linear;
   }
 }
 </style>

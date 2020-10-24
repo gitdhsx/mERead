@@ -2,8 +2,17 @@
   <div id="page">
     <div class="read-wrapper">
       <div class="mask">
-        <title-bar v-show="isTabShow"></title-bar>
-        <menu-bar ref='menuBar'></menu-bar>
+        <title-bar ref="titleBar" :isTitleShow="isTabShow"></title-bar>
+        <menu-bar
+          ref="menuBar"
+          :isMenuShow="isTabShow"
+          :fontSizeList="fontSizeList"
+          :selectFontSize="currentFontSize"
+          @setFontSize="setFontSize"
+          :themeList="themeList"
+          :selectTheme="currentThemeIndex"
+          @setTheme='setTheme'
+        ></menu-bar>
         <div class="left" @click.prevent="prevPage">
           <!-- <a id="prev" href="#prev" class="arrow">‹</a> -->
         </div>
@@ -19,7 +28,7 @@
 
 <script>
 import MenuBar from "./childCompos/MenuBar";
-import TitleBar from "components/content/TitleBar";
+import TitleBar from "./childCompos/TitleBar";
 
 export default {
   name: "Page",
@@ -27,7 +36,45 @@ export default {
     return {
       book: null,
       rendition: null,
+      themes: null,
       isTabShow: false,
+      fontSizeList: [12, 14, 16, 18, 20, 22, 24],
+      currentFontSize: 16,
+      currentThemeIndex: 0,
+      themeList:[
+        {
+          name: 'default',
+          style: {
+            body: {
+              'color': '#000', 'background': '#fff'
+            }
+          }
+        },
+        {
+          name: 'eye',
+          style: {
+            body: {
+              'color': '#000', 'background': '#ceeaba'
+            }
+          }
+        },
+        {
+          name: 'night',
+          style: {
+            body: {
+              'color': '#fff', 'background': '#000'
+            }
+          }
+        },
+        {
+          name: 'gold',
+          style: {
+            body: {
+              'color': '#000', 'background': 'rgb(241, 236, 226)'
+            }
+          }
+        },
+      ]
     };
   },
   components: {
@@ -44,6 +91,12 @@ export default {
     });
     // 3. 通过Rendition.display渲染电子书
     this.rendition.display();
+    this.themes = this.rendition.themes
+    // 4. 设置字体
+    this.setFontSize(this.currentFontSize)
+    // 5. 设置主体
+    this.registerTheme()
+    this.setTheme(this.currentThemeIndex)
   },
   methods: {
     prevPage() {
@@ -58,9 +111,28 @@ export default {
       }
     },
 
-    toggleTabShow(){
-      this.isTabShow = !this.isTabShow
-      this.$refs.menuBar.$refs.tabBar.isShow = !this.$refs.menuBar.$refs.tabBar.isShow
+    toggleTabShow() {
+      this.isTabShow = !this.isTabShow;
+      this.$refs.menuBar.settingHide();
+    },
+
+    setFontSize(fontSize){
+      this.currentFontSize = fontSize
+      if (this.themes) {
+        console.log(2222222222);
+        this.themes.fontSize(fontSize + 'px')
+      }
+    },
+
+    registerTheme() {
+      this.themeList.forEach((theme) => {
+        this.themes.register(theme.name, theme.style)
+      })
+    },
+
+    setTheme(index) {
+      this.currentThemeIndex = index
+      this.themes.select(this.themeList[index].name)
     }
   },
 };
