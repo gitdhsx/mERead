@@ -13,13 +13,15 @@
         <template v-slot:left class="lleft">
           <div class="icon-wrapper"><span class="icon icon-menu"></span></div>
           <div class="icon-wrapper">
-            <span class="icon icon-progess"></span>
+            <span class="icon icon-progess" @click="settingShow(2)"></span>
           </div>
         </template>
         <template v-slot:center class="ccenter"></template>
         <template v-slot:right class="rright">
-          <div class="icon-wrapper"><span class="icon icon-bright"></span></div>
-          <div class="icon-wrapper" @click="settingShow">
+          <div class="icon-wrapper" @click="settingShow(1)">
+            <span class="icon icon-bright"></span>
+          </div>
+          <div class="icon-wrapper" @click="settingShow(0)">
             <span class="icon icon-a">A</span>
           </div>
         </template>
@@ -27,7 +29,7 @@
     </div>
 
     <div class="settings">
-      <div id="font-size-setting">
+      <div id="font-size-setting" v-if="showTag === 0">
         <tab-bar
           ref="fontbar"
           class="font-bar"
@@ -69,16 +71,28 @@
           <template v-slot:right></template>
         </tab-bar>
       </div>
+      <!-- <com-se :is='currentView' :isShow='sshow'></com-se> -->
+
+      <theme-setting
+        class="theme-bar"
+        v-else-if="showTag === 1"
+        :isThemeShow="isSettingShow"
+        :themeList="themeList"
+        :currentTheme="selectTheme"
+      ></theme-setting>
     </div>
   </div>
 </template>
 
 <script>
 import TabBar from "components/common/TabBar";
+import ThemeSetting from "./ThemeSetting";
+
 export default {
   name: "MenuBar",
   components: {
     TabBar,
+    ThemeSetting,
   },
   props: {
     isMenuShow: {
@@ -92,7 +106,6 @@ export default {
     selectFontSize: Number,
     themeList: Array,
     selectTheme: Number,
-
   },
   data() {
     return {
@@ -108,21 +121,25 @@ export default {
         right: 5 + "%",
       },
       isSettingShow: false,
+      showTag: 0,
     };
   },
   mounted() {
     // this.$refs.fontsize.isShow = true
   },
   methods: {
-    settingShow() {
+    settingShow(tag) {
       this.isSettingShow = true;
+      this.showTag = tag;
+      console.log('sssssssssssssss' , tag);
+      this.$emit('menuClick' , tag)
     },
     settingHide() {
       this.isSettingShow = false;
     },
     fontClick(fontSize) {
-      this.$emit('setFontSize', fontSize)
-    }
+      this.$emit("setFontSize", fontSize);
+    },
   },
 };
 </script>
@@ -132,12 +149,21 @@ export default {
 
 #menubar {
   .settings {
+    // bottom: px2rem(48);
+    // height: px2rem(60);
+
     outline: aqua;
+    .theme-bar {
+      outline: aqua;
+      // position: absolute;
+      // bottom: px2rem(48);
+    }
     .font-bar {
       outline: cadetblue;
       bottom: px2rem(48);
       height: px2rem(60);
       z-index: 101;
+      @include center;
       box-shadow: 0 px2rem(-8) px2rem(8) rgba(0, 0, 0, 0.2);
       &.slide-enter,
       &.slide-leave-to {
@@ -155,14 +181,14 @@ export default {
           align-items: center;
           &:first-child {
             // background: #000;
-            .line{
-              &:first-child{
+            .line {
+              &:first-child {
                 border-top: none;
               }
             }
           }
-          &:last-child{
-            :last-child{
+          &:last-child {
+            :last-child {
               border-top: none;
             }
           }
@@ -178,7 +204,7 @@ export default {
             width: 0;
             height: px2rem(7);
             border-left: px2rem(1) solid blue;
-            .circle{
+            .circle {
               position: absolute;
               top: px2rem(-8);
               left: px2rem(-10);
@@ -189,7 +215,7 @@ export default {
               border: px2rem(1) solid #ccc;
               box-shadow: 0 px2rem(4) px2rem(4) rgba(0, 0, 0, 0.2);
               @include center;
-              .point{
+              .point {
                 width: px2rem(5);
                 height: px2rem(5);
                 border-radius: 50%;

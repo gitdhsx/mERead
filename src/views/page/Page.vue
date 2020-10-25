@@ -6,13 +6,26 @@
         <menu-bar
           ref="menuBar"
           :isMenuShow="isTabShow"
+          @menuClick="settingShow"
           :fontSizeList="fontSizeList"
           :selectFontSize="currentFontSize"
           @setFontSize="setFontSize"
           :themeList="themeList"
           :selectTheme="currentThemeIndex"
-          @setTheme='setTheme'
+          @setTheme="setTheme"
         ></menu-bar>
+        <progress-bar
+          class=""
+          v-if="settingShowIndex === 2"
+          :isProgressShow="settingShowIndex === 2"
+          :bookAvailable="bookAvailable"
+          @onProgressChange="onProgressChange"
+        ></progress-bar>
+
+      <transition name="fade">
+        <div class="content-mask" v-show="settingShowIndex=3" @click='hideMenu'></div>
+      </transition>
+
         <div class="left" @click.prevent="prevPage">
           <!-- <a id="prev" href="#prev" class="arrow">‹</a> -->
         </div>
@@ -27,8 +40,10 @@
 </template>
 
 <script>
-import MenuBar from "./childCompos/MenuBar";
 import TitleBar from "./childCompos/TitleBar";
+import MenuBar from "./childCompos/MenuBar";
+import ProgressBar from "./childCompos/ProgressBar";
+import Navigation from "./childCompos/Navigation"
 
 export default {
   name: "Page",
@@ -37,49 +52,58 @@ export default {
       book: null,
       rendition: null,
       themes: null,
+      locations: null,
+      navigation: null,
       isTabShow: false,
+      settingShowIndex: 5,
       fontSizeList: [12, 14, 16, 18, 20, 22, 24],
       currentFontSize: 16,
       currentThemeIndex: 0,
-      themeList:[
+      themeList: [
         {
-          name: 'default',
+          name: "default",
           style: {
             body: {
-              'color': '#000', 'background': '#fff'
-            }
-          }
+              color: "#000",
+              background: "#fff",
+            },
+          },
         },
         {
-          name: 'eye',
+          name: "eye",
           style: {
             body: {
-              'color': '#000', 'background': '#ceeaba'
-            }
-          }
+              color: "#000",
+              background: "#ceeaba",
+            },
+          },
         },
         {
-          name: 'night',
+          name: "night",
           style: {
             body: {
-              'color': '#fff', 'background': '#000'
-            }
-          }
+              color: "#fff",
+              background: "#000",
+            },
+          },
         },
         {
-          name: 'gold',
+          name: "gold",
           style: {
             body: {
-              'color': '#000', 'background': 'rgb(241, 236, 226)'
-            }
-          }
+              color: "#000",
+              background: "rgb(241, 236, 226)",
+            },
+          },
         },
-      ]
+      ],
+      bookAvailable: false,
     };
   },
   components: {
     MenuBar,
     TitleBar,
+    ProgressBar,
   },
   mounted() {
     // 1. 获取Book对象
@@ -91,12 +115,29 @@ export default {
     });
     // 3. 通过Rendition.display渲染电子书
     this.rendition.display();
-    this.themes = this.rendition.themes
+    this.themes = this.rendition.themes;
     // 4. 设置字体
-    this.setFontSize(this.currentFontSize)
+    this.setFontSize(this.currentFontSize);
     // 5. 设置主体
-    this.registerTheme()
-    this.setTheme(this.currentThemeIndex)
+    this.registerTheme();
+    this.setTheme(this.currentThemeIndex);
+
+    // 6. 生成locations 和 navigation对象
+    this.book.ready
+      .then(() => {
+        this.navigation = this.book.navigation;
+        return this.book.locations.generate();
+      })
+      .then((result) => {
+        this.locations = this.book.locations;
+        this.bookAvailable = true;
+        console.log(this.navigation, this.locations);
+        this.onProgressChange(95);
+      });
+
+    this.$bus.$on("selectTheme", (themeIndex) => {
+      this.setTheme(themeIndex);
+    });
   },
   methods: {
     prevPage() {
@@ -116,24 +157,47 @@ export default {
       this.$refs.menuBar.settingHide();
     },
 
-    setFontSize(fontSize){
-      this.currentFontSize = fontSize
+    settingShow(index) {
+      this.settingShowIndex = index;
+      console.log(index);
+    },
+
+    setFontSize(fontSize) {
+      this.currentFontSize = fontSize;
       if (this.themes) {
-        console.log(2222222222);
-        this.themes.fontSize(fontSize + 'px')
+        this.themes.fontSize(fontSize + "px");
       }
     },
 
     registerTheme() {
       this.themeList.forEach((theme) => {
-        this.themes.register(theme.name, theme.style)
-      })
+        this.themes.register(theme.name, theme.style);
+      });
     },
 
     setTheme(index) {
-      this.currentThemeIndex = index
-      this.themes.select(this.themeList[index].name)
+      this.currentThemeIndex = index;
+      this.themes.select(this.themeList[index].name);
+    },
+
+    onProgressChange(progress) {
+      const percentage = progress / 100;
+      const location =
+        percentage > 0 ? this.locations.cfiFromPercentage(percentage) : 0;
+      this.rendition.display(location);
+    },
+
+    jumpTo(href) {
+      this.rendition.display(href);
+      this.hideMenu();
+    },
+
+    hideMenu() {
+      this.isTabShow = false
+      this.$refs.menuBar.settingHide()
+      this.settingShowIndex = 5
     }
+
   },
 };
 </script>

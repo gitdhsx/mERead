@@ -42,7 +42,7 @@ export default {
     },
     columnn: {
       type: Number,
-      default: 2,
+      default: 5,
     },
     itemsWidth: {
       type: Object,
@@ -68,10 +68,14 @@ export default {
     getRightClass() {},
     getStyle() {
       if (this.columnn === 0 && this.itemsWidth) {
-        console.log(111111111111111111);
         this.leftStyle = { flex: "0 0 " + this.itemsWidth.left };
         this.centerStyle = { flex: "0 0 " + this.itemsWidth.center };
         this.rightStyle = { flex: "0 0 " + this.itemsWidth.right };
+      }
+      else if(this.columnn === 1) {
+        this.leftStyle = {flex: "0 0 px2rem(10)"} 
+        this.centerStyle = {flex: 1}
+        this.rightStyle= {flex: "0 0 px2rem(10)"} 
       }
       if (this.position === "top" && !this.itemsWidth) {
         console.log("tooopppp");
@@ -113,7 +117,7 @@ export default {
   }
   .center {
     display: flex;
-    @include center;
+    // @include center;
   }
   .right {
     display: flex;
@@ -133,7 +137,7 @@ export default {
   }
   &.slide-enter-active,
   &.slide-leave-active {
-    transition: all 0.25s linear;
+    transition: all 1s linear;
   }
 }
 </style>
